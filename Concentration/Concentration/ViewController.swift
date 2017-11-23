@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    /// Game model.
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
 
     var flipCount = 0 {
@@ -27,7 +27,6 @@ class ViewController: UIViewController {
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
-//            flipCard(withEmoji: emojiChoices[cardNumber], on: sender)
         } else {
             print("chosen card was not in cardButtons")
         }
@@ -47,7 +46,7 @@ class ViewController: UIViewController {
         }
     }
 
-    var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎"]
+    var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎", "🍫"]
 
     /// Dictionary matching card identifier `Int`s to emoji `String`s.
     var emoji = [Int: String]()
