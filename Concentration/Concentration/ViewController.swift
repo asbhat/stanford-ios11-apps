@@ -10,12 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     /// Game model.
-    lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+    lazy var game = Concentration(numberOfPairsOfCards: pairsOfCards)
 
     var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
+    }
+
+    private var pairsOfCards: Int {
+        return (cardButtons.count + 1) / 2
     }
 
     @IBOutlet weak var flipCountLabel: UILabel!
@@ -32,6 +36,14 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func startNewGame() {
+        let alertToConfirmNewGame = UIAlertController(title: "New Game?", message: "All progress will be lost.", preferredStyle: .alert)
+        alertToConfirmNewGame.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in self.resetGame()} ))
+        alertToConfirmNewGame.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        self.present(alertToConfirmNewGame, animated: true)
+    }
+
     func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
@@ -46,6 +58,7 @@ class ViewController: UIViewController {
         }
     }
 
+    let halloweenEmojis = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎", "🍫"]
     var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎", "🍫"]
 
     /// Dictionary matching card identifier `Int`s to emoji `String`s.
@@ -57,6 +70,15 @@ class ViewController: UIViewController {
             emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
         }
         return emoji[card.identifier] ?? "?"
+    }
+
+    /// Resets all progress and begins a new game.
+    private func resetGame() {
+        game = Concentration(numberOfPairsOfCards: pairsOfCards)
+        flipCount = 0
+        emojiChoices = halloweenEmojis
+        emoji.removeAll()
+        updateViewFromModel()
     }
 
 }
