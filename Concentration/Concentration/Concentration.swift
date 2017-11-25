@@ -42,6 +42,11 @@ class Concentration {
             let card = Card()
             cards += [card, card]
         }
-        // TODO: Shuffle the cards
+        // Shuffle the cards ([Fisher-Yates Shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle))
+        guard cards.count > 1 else { return }
+        for (index, remainingCardsToShuffle) in (2...cards.count).reversed().enumerated() {
+            let swapIndex = index + Int(arc4random_uniform(UInt32(remainingCardsToShuffle)))
+            cards.swapAt(index, swapIndex)
+        }
     }
 }
