@@ -58,15 +58,22 @@ class ViewController: UIViewController {
         }
     }
 
-    let halloweenEmojis = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎", "🍫"]
-    var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎", "🍫"]
+    var themes = [
+        Theme(name: "Halloween", emojis: ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎", "🍫"]),
+        Theme(name: "Winter", emojis: ["🎅🏻", "🎅🏿", "❄️", "⛄️", "⛷", "🏂", "🎄", "🏔", "🌨", "🎁"]),
+        Theme(name: "Occupations", emojis: ["👮🏻‍♀️", "👷🏼‍♀️", "💂🏻‍♂️", "🕵🏾‍♂️", "👩🏼‍⚕️", "👩🏼‍🌾", "👨🏻‍🍳", "👩🏻‍🎤", "👩🏼‍🏫", "👨🏾‍🚀"]),
+        Theme(name: "Athletes", emojis: ["⛷", "🏂", "🏋🏿‍♂️", "🤼‍♀️", "🤸🏼‍♀️", "⛹🏻‍♂️", "🤺", "🏄🏼‍♀️", "🏊🏼‍♀️", "🚵🏼‍♀️"]),
+        Theme(name: "Animals", emojis: ["🐶", "🐱", "🐰", "🦊", "🐼", "🐨", "🐯", "🦁", "🐷", "🐵", "🦉", "🐢", "🦖", "🐙"]),
+        Theme(name: "Fantasy", emojis: ["🧙🏻‍♂️", "🧝🏻‍♀️", "🧛🏿‍♂️", "🧟‍♀️", "🧞‍♂️", "🧜🏻‍♀️", "🧚🏻‍♀️", "🦄", "🐉", "👼🏽"])
+    ]
+    lazy var emojiChoices = themes[themes.count.random()].emojis
 
     /// Dictionary matching card identifier `Int`s to emoji `String`s.
     var emoji = [Int: String]()
 
     func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
+            let randomIndex = emojiChoices.count.random()
             emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
         }
         return emoji[card.identifier] ?? "?"
@@ -76,9 +83,14 @@ class ViewController: UIViewController {
     private func resetGame() {
         game = Concentration(numberOfPairsOfCards: pairsOfCards)
         flipCount = 0
-        emojiChoices = halloweenEmojis
+        emojiChoices = themes[themes.count.random()].emojis
         emoji.removeAll()
         updateViewFromModel()
     }
 
+}
+
+struct Theme {
+    let name: String
+    let emojis: [String]
 }
