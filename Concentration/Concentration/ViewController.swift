@@ -12,12 +12,6 @@ class ViewController: UIViewController {
     /// Game model.
     lazy var game = Concentration(numberOfPairsOfCards: pairsOfCards)
 
-    var flipCount = 0 {
-        didSet {
-            flipCountLabel.text = "Flips: \(flipCount)"
-        }
-    }
-
     private var pairsOfCards: Int {
         return (cardButtons.count + 1) / 2
     }
@@ -28,7 +22,6 @@ class ViewController: UIViewController {
     @IBOutlet var cardButtons: [UIButton]!
 
     @IBAction func touchCard(_ sender: UIButton) {
-        flipCount += 1
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
@@ -47,6 +40,7 @@ class ViewController: UIViewController {
 
     func updateViewFromModel() {
         scoreLabel.text = "Score: \(game.score)"
+        flipCountLabel.text = "Flips: \(game.flipCount)"
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
@@ -84,7 +78,6 @@ class ViewController: UIViewController {
     /// Resets all progress and begins a new game.
     private func resetGame() {
         game = Concentration(numberOfPairsOfCards: pairsOfCards)
-        flipCount = 0
         emojiChoices = themes[themes.count.random()].emojis
         emoji.removeAll()
         updateViewFromModel()

@@ -17,8 +17,11 @@ class Concentration {
     var score = 0
     private var mismatchedCardIdentifiers = [Int]()
 
+    var flipCount = 0
+
     func chooseCard(at index: Int) {
         if !cards[index].isMatched {
+            flipCount += 1
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
                 // check if cards match
                 if cards[matchIndex].identifier == cards[index].identifier {
