@@ -49,20 +49,22 @@ class ViewController: UIViewController {
                 button.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
             } else {
                 button.setTitle("", for: .normal)
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : currentTheme.cardBack
             }
         }
+        view.backgroundColor = currentTheme.background
     }
 
     var themes = [
-        Theme(name: "Halloween", emojis: ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎", "🍫"]),
-        Theme(name: "Winter", emojis: ["🎅🏻", "🎅🏿", "❄️", "⛄️", "⛷", "🏂", "🎄", "🏔", "🌨", "🎁"]),
-        Theme(name: "Occupations", emojis: ["👮🏻‍♀️", "👷🏼‍♀️", "💂🏻‍♂️", "🕵🏾‍♂️", "👩🏼‍⚕️", "👩🏼‍🌾", "👨🏻‍🍳", "👩🏻‍🎤", "👩🏼‍🏫", "👨🏾‍🚀"]),
-        Theme(name: "Athletes", emojis: ["⛷", "🏂", "🏋🏿‍♂️", "🤼‍♀️", "🤸🏼‍♀️", "⛹🏻‍♂️", "🤺", "🏄🏼‍♀️", "🏊🏼‍♀️", "🚵🏼‍♀️"]),
-        Theme(name: "Animals", emojis: ["🐶", "🐱", "🐰", "🦊", "🐼", "🐨", "🐯", "🦁", "🐷", "🐵", "🦉", "🐢", "🦖", "🐙"]),
-        Theme(name: "Fantasy", emojis: ["🧙🏻‍♂️", "🧝🏻‍♀️", "🧛🏿‍♂️", "🧟‍♀️", "🧞‍♂️", "🧜🏻‍♀️", "🧚🏻‍♀️", "🦄", "🐉", "👼🏽"])
+        Theme(name: "Halloween", emojis: ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎", "🍫"], cardBack: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1), background: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)),
+        Theme(name: "Winter", emojis: ["🎅🏻", "🎅🏿", "❄️", "⛄️", "⛷", "🏂", "🎄", "🏔", "🌨", "🎁"], cardBack: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), background: #colorLiteral(red: 0.4513868093, green: 0.9930960536, blue: 1, alpha: 1)),
+        Theme(name: "Occupations", emojis: ["👮🏻‍♀️", "👷🏼‍♀️", "💂🏻‍♂️", "🕵🏾‍♂️", "👩🏼‍⚕️", "👩🏼‍🌾", "👨🏻‍🍳", "👩🏻‍🎤", "👩🏼‍🏫", "👨🏾‍🚀"], cardBack: #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1), background: #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1)),
+        Theme(name: "Athletes", emojis: ["⛷", "🏂", "🏋🏿‍♂️", "🤼‍♀️", "🤸🏼‍♀️", "⛹🏻‍♂️", "🤺", "🏄🏼‍♀️", "🏊🏼‍♀️", "🚵🏼‍♀️"], cardBack: #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), background: #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)),
+        Theme(name: "Animals", emojis: ["🐶", "🐱", "🐰", "🦊", "🐼", "🐨", "🐯", "🦁", "🐷", "🐵", "🦉", "🐢", "🦖", "🐙"], cardBack: #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), background: #colorLiteral(red: 0.557056431, green: 0.3943228353, blue: 0.2189383229, alpha: 1)),
+        Theme(name: "Fantasy", emojis: ["🧙🏻‍♂️", "🧝🏻‍♀️", "🧛🏿‍♂️", "🧟‍♀️", "🧞‍♂️", "🧜🏻‍♀️", "🧚🏻‍♀️", "🦄", "🐉", "👼🏽"], cardBack: #colorLiteral(red: 0, green: 0.9914394021, blue: 1, alpha: 1), background: #colorLiteral(red: 0.5791940689, green: 0.1280144453, blue: 0.5726861358, alpha: 1))
     ]
-    lazy var emojiChoices = themes[themes.count.random()].emojis
+    lazy var currentTheme = themes[themes.count.random()]
+    lazy var emojiChoices = currentTheme.emojis
 
     /// Dictionary matching card identifier `Int`s to emoji `String`s.
     var emoji = [Int: String]()
@@ -78,8 +80,14 @@ class ViewController: UIViewController {
     /// Resets all progress and begins a new game.
     private func resetGame() {
         game = Concentration(numberOfPairsOfCards: pairsOfCards)
-        emojiChoices = themes[themes.count.random()].emojis
+        currentTheme = themes[themes.count.random()]
+        emojiChoices = currentTheme.emojis
         emoji.removeAll()
+        updateViewFromModel()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         updateViewFromModel()
     }
 
@@ -88,4 +96,6 @@ class ViewController: UIViewController {
 struct Theme {
     let name: String
     let emojis: [String]
+    let cardBack: UIColor
+    let background: UIColor
 }
