@@ -9,9 +9,15 @@
 import Foundation
 
 extension Int {
-    /// Returns a random `Int` less than the current value, implementing `arc4random_uniform()`.
-    func random() -> Int {
-        return Int( arc4random_uniform( UInt32(self) ) )
+    /// Random `Int` between the current value (exclusive) and zero (inclusive), implementing `arc4random_uniform()`.
+    var arc4random: Int {
+        if self > 0 {
+            return Int( arc4random_uniform( UInt32(self) ) )
+        } else if self < 0 {
+            return -Int( arc4random_uniform( UInt32( abs(self) ) ) )
+        } else {
+            return 0
+        }
     }
 }
 

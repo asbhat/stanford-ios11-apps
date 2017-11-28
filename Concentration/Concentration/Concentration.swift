@@ -10,18 +10,38 @@ import Foundation
 
 class Concentration {
 
-    var cards = [Card]()
+    private(set) var cards = [Card]()
 
-    var indexOfOneAndOnlyFaceUpCard: Int?
+    private var indexOfOneAndOnlyFaceUpCard: Int? {
+        get {
+            var foundIndex: Int?
+            for index in cards.indices {
+                if cards[index].isFaceUp {
+                    if foundIndex == nil {
+                        foundIndex = index
+                    } else {
+                        return nil
+                    }
+                }
+            }
+            return foundIndex
+        }
+        set {
+            for index in cards.indices {
+                cards[index].isFaceUp = (index == newValue)
+            }
+        }
+    }
 
     var score: Double {
         return scoring.currentScore
     }
     private var scoring = Scoring()
 
-    var flipCount = 0
+    private(set) var flipCount = 0
 
     func chooseCard(at index: Int) {
+        assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): chosen index not in the cards")
         if !cards[index].isMatched {
             flipCount += 1
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
@@ -35,15 +55,10 @@ class Concentration {
                     scoring.updateForMismatch(at: cards[matchIndex].identifier)
                 }
                 cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUpCard = nil
                 scoring.resetTimer()
             } else {
                 // either no cards or 2 cards are face up
                 // flip all cards face down
-                for flipDownIndex in cards.indices {
-                    cards[flipDownIndex].isFaceUp = false
-                }
-                cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
@@ -51,6 +66,7 @@ class Concentration {
 
     /// ViewController needs to determine the number of pairs of cards.
     init(numberOfPairsOfCards: Int) {
+        assert(numberOfPairsOfCards > 0, "Concentration.init(numberOfPairsOfCards: \(numberOfPairsOfCards): Need at least one pair")
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]
@@ -58,7 +74,7 @@ class Concentration {
         // Shuffle the cards ([Fisher-Yates Shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle))
         guard cards.count > 1 else { return }
         for (index, remainingCardsToShuffle) in (2...cards.count).reversed().enumerated() {
-            let swapIndex = index + remainingCardsToShuffle.random()
+            let swapIndex = index + remainingCardsToShuffle.arc4random
             cards.swapAt(index, swapIndex)
         }
     }
