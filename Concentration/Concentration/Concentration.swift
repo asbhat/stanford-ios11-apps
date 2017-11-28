@@ -14,8 +14,10 @@ class Concentration {
 
     var indexOfOneAndOnlyFaceUpCard: Int?
 
-    var score = 0
-    private var mismatchedCardIdentifiers = [Int]()
+    var score: Double {
+        return scoring.currentScore
+    }
+    private var scoring = Scoring()
 
     var flipCount = 0
 
@@ -27,13 +29,14 @@ class Concentration {
                 if cards[matchIndex].identifier == cards[index].identifier {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
-                    score += 2
+                    scoring.updateForMatch()
                 } else {
-                    updateScoreForMismatch(at: index)
-                    updateScoreForMismatch(at: matchIndex)
+                    scoring.updateForMismatch(at: cards[index].identifier)
+                    scoring.updateForMismatch(at: cards[matchIndex].identifier)
                 }
                 cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = nil
+                scoring.resetTimer()
             } else {
                 // either no cards or 2 cards are face up
                 // flip all cards face down
@@ -43,15 +46,6 @@ class Concentration {
                 cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = index
             }
-        }
-    }
-
-    private func updateScoreForMismatch(at index: Int) {
-        let identifier = cards[index].identifier
-        if mismatchedCardIdentifiers.contains(identifier) {
-            score -= 1
-        } else {
-            mismatchedCardIdentifiers.append(identifier)
         }
     }
 
@@ -68,4 +62,31 @@ class Concentration {
             cards.swapAt(index, swapIndex)
         }
     }
+}
+
+fileprivate struct Scoring {
+
+    var currentScore = 0.0
+
+    mutating func resetTimer() {
+        lastMove = Date()
+    }
+
+    mutating func updateForMismatch(at identifier: Int) {
+        let multiplier = min(-lastMove.timeIntervalSinceNow / maxSeconds, 1)
+        if mismatchedCardIdentifiers.contains(identifier) {
+            currentScore -= multiplier.rounded(toDecimalPlaces: 1)
+        } else {
+            mismatchedCardIdentifiers.append(identifier)
+        }
+    }
+
+    mutating func updateForMatch() {
+        let multiplier = max(maxSeconds / -lastMove.timeIntervalSinceNow, 1)
+        currentScore += 2 * multiplier.rounded(toDecimalPlaces: 1)
+    }
+
+    private var lastMove = Date()
+    private var mismatchedCardIdentifiers = [Int]()
+    private let maxSeconds = 5.0
 }
