@@ -12,10 +12,29 @@
 		4823776D1FC50854000EB49F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4823776B1FC50854000EB49F /* Main.storyboard */; };
 		4823776F1FC50854000EB49F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4823776E1FC50854000EB49F /* Assets.xcassets */; };
 		482377721FC50854000EB49F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482377701FC50854000EB49F /* LaunchScreen.storyboard */; };
+		482EB00A1FCE40F500E73C70 /* ConcentrationGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482EB0091FCE40F500E73C70 /* ConcentrationGameTests.swift */; };
+		482EB0181FCE419400E73C70 /* ConcentrationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482EB0171FCE419400E73C70 /* ConcentrationUITests.swift */; };
 		48725BFC1FC935E600163F4F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48725BFB1FC935E600163F4F /* Extensions.swift */; };
 		48D71C561FC62E4600CB90B0 /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D71C551FC62E4600CB90B0 /* Concentration.swift */; };
 		48D71C581FC62EFE00CB90B0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D71C571FC62EFE00CB90B0 /* Card.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		482EB00C1FCE40F500E73C70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4823775C1FC50854000EB49F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 482377631FC50854000EB49F;
+			remoteInfo = Concentration;
+		};
+		482EB01A1FCE419400E73C70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4823775C1FC50854000EB49F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 482377631FC50854000EB49F;
+			remoteInfo = Concentration;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		482377641FC50854000EB49F /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -25,6 +44,12 @@
 		4823776E1FC50854000EB49F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		482377711FC50854000EB49F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		482377731FC50854000EB49F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		482EB0071FCE40F500E73C70 /* ConcentrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcentrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		482EB0091FCE40F500E73C70 /* ConcentrationGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationGameTests.swift; sourceTree = "<group>"; };
+		482EB00B1FCE40F500E73C70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		482EB0151FCE419400E73C70 /* ConcentrationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcentrationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		482EB0171FCE419400E73C70 /* ConcentrationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationUITests.swift; sourceTree = "<group>"; };
+		482EB0191FCE419400E73C70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48725BFB1FC935E600163F4F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		48D71C551FC62E4600CB90B0 /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
 		48D71C571FC62EFE00CB90B0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -38,6 +63,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		482EB0041FCE40F500E73C70 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		482EB0121FCE419400E73C70 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -45,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				482377661FC50854000EB49F /* Concentration */,
+				482EB0081FCE40F500E73C70 /* ConcentrationTests */,
+				482EB0161FCE419400E73C70 /* ConcentrationUITests */,
 				482377651FC50854000EB49F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				482377641FC50854000EB49F /* Concentration.app */,
+				482EB0071FCE40F500E73C70 /* ConcentrationTests.xctest */,
+				482EB0151FCE419400E73C70 /* ConcentrationUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +124,24 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		482EB0081FCE40F500E73C70 /* ConcentrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				482EB0091FCE40F500E73C70 /* ConcentrationGameTests.swift */,
+				482EB00B1FCE40F500E73C70 /* Info.plist */,
+			);
+			path = ConcentrationTests;
+			sourceTree = "<group>";
+		};
+		482EB0161FCE419400E73C70 /* ConcentrationUITests */ = {
+			isa = PBXGroup;
+			children = (
+				482EB0171FCE419400E73C70 /* ConcentrationUITests.swift */,
+				482EB0191FCE419400E73C70 /* Info.plist */,
+			);
+			path = ConcentrationUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,6 +162,42 @@
 			productReference = 482377641FC50854000EB49F /* Concentration.app */;
 			productType = "com.apple.product-type.application";
 		};
+		482EB0061FCE40F500E73C70 /* ConcentrationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 482EB00E1FCE40F500E73C70 /* Build configuration list for PBXNativeTarget "ConcentrationTests" */;
+			buildPhases = (
+				482EB0031FCE40F500E73C70 /* Sources */,
+				482EB0041FCE40F500E73C70 /* Frameworks */,
+				482EB0051FCE40F500E73C70 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				482EB00D1FCE40F500E73C70 /* PBXTargetDependency */,
+			);
+			name = ConcentrationTests;
+			productName = ConcentrationTests;
+			productReference = 482EB0071FCE40F500E73C70 /* ConcentrationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		482EB0141FCE419400E73C70 /* ConcentrationUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 482EB01C1FCE419400E73C70 /* Build configuration list for PBXNativeTarget "ConcentrationUITests" */;
+			buildPhases = (
+				482EB0111FCE419400E73C70 /* Sources */,
+				482EB0121FCE419400E73C70 /* Frameworks */,
+				482EB0131FCE419400E73C70 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				482EB01B1FCE419400E73C70 /* PBXTargetDependency */,
+			);
+			name = ConcentrationUITests;
+			productName = ConcentrationUITests;
+			productReference = 482EB0151FCE419400E73C70 /* ConcentrationUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -114,6 +211,16 @@
 					482377631FC50854000EB49F = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+					};
+					482EB0061FCE40F500E73C70 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 482377631FC50854000EB49F;
+					};
+					482EB0141FCE419400E73C70 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 482377631FC50854000EB49F;
 					};
 				};
 			};
@@ -131,6 +238,8 @@
 			projectRoot = "";
 			targets = (
 				482377631FC50854000EB49F /* Concentration */,
+				482EB0061FCE40F500E73C70 /* ConcentrationTests */,
+				482EB0141FCE419400E73C70 /* ConcentrationUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -143,6 +252,20 @@
 				482377721FC50854000EB49F /* LaunchScreen.storyboard in Resources */,
 				4823776F1FC50854000EB49F /* Assets.xcassets in Resources */,
 				4823776D1FC50854000EB49F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		482EB0051FCE40F500E73C70 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		482EB0131FCE419400E73C70 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +284,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		482EB0031FCE40F500E73C70 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				482EB00A1FCE40F500E73C70 /* ConcentrationGameTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		482EB0111FCE419400E73C70 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				482EB0181FCE419400E73C70 /* ConcentrationUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		482EB00D1FCE40F500E73C70 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 482377631FC50854000EB49F /* Concentration */;
+			targetProxy = 482EB00C1FCE40F500E73C70 /* PBXContainerItemProxy */;
+		};
+		482EB01B1FCE419400E73C70 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 482377631FC50854000EB49F /* Concentration */;
+			targetProxy = 482EB01A1FCE419400E73C70 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4823776B1FC50854000EB49F /* Main.storyboard */ = {
@@ -295,7 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 9JN3X82564;
 				INFOPLIST_FILE = Concentration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -312,7 +464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 9JN3X82564;
 				INFOPLIST_FILE = Concentration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -321,6 +473,68 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		482EB00F1FCE40F500E73C70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9JN3X82564;
+				INFOPLIST_FILE = ConcentrationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = diddly.bot.studios.ConcentrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Concentration.app/Concentration";
+			};
+			name = Debug;
+		};
+		482EB0101FCE40F500E73C70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9JN3X82564;
+				INFOPLIST_FILE = ConcentrationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = diddly.bot.studios.ConcentrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Concentration.app/Concentration";
+			};
+			name = Release;
+		};
+		482EB01D1FCE419400E73C70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9JN3X82564;
+				INFOPLIST_FILE = ConcentrationUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = diddly.bot.studios.ConcentrationUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Concentration;
+			};
+			name = Debug;
+		};
+		482EB01E1FCE419400E73C70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9JN3X82564;
+				INFOPLIST_FILE = ConcentrationUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = diddly.bot.studios.ConcentrationUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Concentration;
 			};
 			name = Release;
 		};
@@ -341,6 +555,24 @@
 			buildConfigurations = (
 				482377771FC50854000EB49F /* Debug */,
 				482377781FC50854000EB49F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		482EB00E1FCE40F500E73C70 /* Build configuration list for PBXNativeTarget "ConcentrationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				482EB00F1FCE40F500E73C70 /* Debug */,
+				482EB0101FCE40F500E73C70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		482EB01C1FCE419400E73C70 /* Build configuration list for PBXNativeTarget "ConcentrationUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				482EB01D1FCE419400E73C70 /* Debug */,
+				482EB01E1FCE419400E73C70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
