@@ -16,10 +16,8 @@ class ConcentrationGameTests: XCTestCase {
     // MARK: Unit test helper functions
 
     private func getMatchingCardIndeces() -> (matchIndex1: Int, matchIndex2: Int) {
-        let cardIdentifiers = Array( game.cards.map {$0.identifier} )
-        let matchIndex1 = cardIdentifiers.index(of: cardIdentifiers.min()!)!
-        let matchIndex2 = cardIdentifiers[(matchIndex1+1)...].index(of: cardIdentifiers.min()!)!
-        return (matchIndex1, matchIndex2)
+        let matchIndices = game.cards.indices.filter { game.cards[0] == game.cards[$0] }
+        return (matchIndices[0], matchIndices[1])
     }
 
     // MARK: Unit tests
@@ -55,12 +53,12 @@ class ConcentrationGameTests: XCTestCase {
         var index3 = game.cards.count - 1
         var index4 = index3 - 1
 
-        if game.cards[index1].identifier == game.cards[index2].identifier {
+        if game.cards[index1] == game.cards[index2] {
             index1 += 1
             index2 += 1
         }
 
-        if game.cards[index3].identifier == game.cards[index4].identifier {
+        if game.cards[index3] == game.cards[index4] {
             index3 -= 1
             index4 -= 1
         }
@@ -102,7 +100,7 @@ class ConcentrationGameTests: XCTestCase {
             game.chooseCard(at: cardIndex)
             sleep(1)  // need to sleep because of timing in scoring
             game.chooseCard(at: cardIndex+1)
-            if game.cards[cardIndex].identifier == game.cards[cardIndex+1].identifier {
+            if game.cards[cardIndex] == game.cards[cardIndex+1] {
                 baseScore = game.score
                 cardIndex += 2
             } else {
@@ -126,9 +124,11 @@ class ConcentrationGameTests: XCTestCase {
     }
 
     func testCardsAreShuffled() {
-        let shuffledIdentifiers = Array( game.cards.map {$0.identifier} )
-        let orderedIdentifiers = shuffledIdentifiers.sorted()
-        XCTAssert(orderedIdentifiers != shuffledIdentifiers)  // this might return false on very rare occasions...
+        let cards1 = game.cards
+        let numberOfPairOfCards = game.cards.count / 2
+        game = Concentration(numberOfPairsOfCards: numberOfPairOfCards)
+        let cards2 = game.cards
+        XCTAssert(cards1 != cards2)  // this might return false on very rare occasions...
     }
 
 }

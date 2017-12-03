@@ -8,12 +8,18 @@
 
 import Foundation
 
-struct Card {
+struct Card: Hashable {
+
+    var hashValue: Int { return identifier }
+
+    static func ==(lhs: Card, rhs: Card) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
 
     var isFaceUp = false
     var isMatched = false
     /// The unique representation of a card. (UI indendepent so no emojis).
-    var identifier: Int
+    private var identifier: Int
 
     /// Stored at the `struct` level to keep unique across instances.
     private static var identifierFactory = 0
