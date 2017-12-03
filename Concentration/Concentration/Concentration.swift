@@ -8,23 +8,13 @@
 
 import Foundation
 
-class Concentration {
+struct Concentration {
 
     private(set) var cards = [Card]()
 
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
-            var foundIndex: Int?
-            for index in cards.indices {
-                if cards[index].isFaceUp {
-                    if foundIndex == nil {
-                        foundIndex = index
-                    } else {
-                        return nil
-                    }
-                }
-            }
-            return foundIndex
+            return cards.indices.filter { cards[$0].isFaceUp }.oneAndOnly
         }
         set {
             for index in cards.indices {
@@ -40,19 +30,19 @@ class Concentration {
 
     private(set) var flipCount = 0
 
-    func chooseCard(at index: Int) {
+    mutating func chooseCard(at index: Int) {
         assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): chosen index not in the cards")
         if !cards[index].isMatched {
             flipCount += 1
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
                 // check if cards match
-                if cards[matchIndex].identifier == cards[index].identifier {
+                if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                     scoring.updateForMatch()
                 } else {
-                    scoring.updateForMismatch(at: cards[index].identifier)
-                    scoring.updateForMismatch(at: cards[matchIndex].identifier)
+                    scoring.updateForMismatch(card: cards[index])
+                    scoring.updateForMismatch(card: cards[matchIndex])
                 }
                 cards[index].isFaceUp = true
                 scoring.resetTimer()
@@ -88,12 +78,12 @@ fileprivate struct Scoring {
         lastMove = Date()
     }
 
-    mutating func updateForMismatch(at identifier: Int) {
+    mutating func updateForMismatch(card: Card) {
         let multiplier = min(-lastMove.timeIntervalSinceNow / maxSeconds, 1)
-        if mismatchedCardIdentifiers.contains(identifier) {
+        if mismatchedCardIdentifiers.contains(card) {
             currentScore -= multiplier.rounded(toDecimalPlaces: 1)
         } else {
-            mismatchedCardIdentifiers.append(identifier)
+            mismatchedCardIdentifiers.append(card)
         }
     }
 
@@ -103,6 +93,12 @@ fileprivate struct Scoring {
     }
 
     private var lastMove = Date()
-    private var mismatchedCardIdentifiers = [Int]()
+    private var mismatchedCardIdentifiers = [Card]()
     private let maxSeconds = 5.0
+}
+
+extension Collection {
+    var oneAndOnly: Element? {
+        return count == 1 ? first : nil
+    }
 }
