@@ -9,28 +9,76 @@
 import XCTest
 
 class SetUITests: XCTestCase {
-        
+
+    let app = XCUIApplication()
+    let predicateForCards = NSPredicate(format: "(NOT label CONTAINS[cd] %@) AND (NOT label CONTAINS[cd] %@)", "new game", "deal 3 more cards")
+    lazy var cards = app.descendants(matching: .button).matching(predicateForCards).allElementsBoundByIndex
+
+    let buttonNames = ["New Game", "Deal 3 More Cards"]
+    let labelNames = [String]()  // TODO: fill this in with accessibility identifiers
+
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+        app.launch()
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        XCUIDevice.shared.orientation = .portrait
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+
+    // MARK: UI test helper functions
+
+    private func labelsExist(_ labelArray: [String], callingFile: StaticString = #file, callingLine: UInt = #line) {
+        for labelName in labelArray {
+            XCTAssert(app.staticTexts[labelName].exists, "\(labelName) label does not exist!", file: callingFile, line: callingLine)
+        }
     }
-    
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+    private func labelsOnScreen(_ labelArray: [String], callingFile: StaticString = #file, callingLine: UInt = #line) {
+        let window = app.windows.element(boundBy: 0)
+        for labelName in labelArray {
+            let label = app.staticTexts[labelName]
+            XCTAssert(window.frame.contains(label.frame), file: callingFile, line: callingLine)
+        }
     }
-    
+
+    private func buttonsExist(_ buttonArray: [String], callingFile: StaticString = #file, callingLine: UInt = #line) {
+        for buttonName in buttonArray {
+            XCTAssert(app.buttons[buttonName].exists, "\(buttonName) button does not exist!", file: callingFile, line:callingLine)
+        }
+    }
+
+    private func buttonsExist(_ buttonArray: [XCUIElement], callingFile: StaticString = #file, callingLine: UInt = #line) {
+        for button in buttonArray {
+            XCTAssert(button.exists, "\(button) button does not exist!", file: callingFile, line:callingLine)
+        }
+    }
+
+    private func buttonsOnScreen(_ buttonArray: [String], callingFile: StaticString = #file, callingLine: UInt = #line) {
+        let window = app.windows.element(boundBy: 0)
+        for buttonName in buttonArray {
+            let button = app.buttons[buttonName]
+            XCTAssert(window.frame.contains(button.frame), file: callingFile, line: callingLine)
+        }
+    }
+
+    private func buttonsOnScreen(_ buttonArray: [XCUIElement], callingFile: StaticString = #file, callingLine: UInt = #line) {
+        let window = app.windows.element(boundBy: 0)
+        for button in buttonArray {
+            XCTAssert(window.frame.contains(button.frame), file: callingFile, line: callingLine)
+        }
+    }
+
+    // MARK: UI tests
+
+    /// Project 2 Required Task 2: Have at least 24 cards on screen
+    func testCardsAreOnScreen() {
+        buttonsOnScreen(cards)
+    }
+
+    /// Project 2 Required Task 2: Have at least 24 cards on screen
+    func testHaveAtLeast24Cards() {
+        print("cards.count : \(cards.count)")
+        XCTAssert(cards.count >= 24)
+    }
+
 }

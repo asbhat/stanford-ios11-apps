@@ -11,7 +11,7 @@
  - `private` - only callable within this object
  - `private(set)` - readable outside the object, but not settable
  - `fileprivate` - accessible by any code in this file
- 
+
  frameworks only
  - `public` - can be used by objects outside the framework
  - `open` - `public` and objects outside the framework can subclass this

@@ -1,5 +1,5 @@
 //: [Previous](@previous)
-/*: 
+/*:
  ## Tuples ##
  ---
 
