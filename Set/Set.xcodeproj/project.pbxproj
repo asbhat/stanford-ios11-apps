@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480975351FDA171800EB9336 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480975341FDA171800EB9336 /* Extensions.swift */; };
+		488047F41FD75C7F0047ED55 /* SetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488047F31FD75C7F0047ED55 /* SetCard.swift */; };
+		488047F61FD7651B0047ED55 /* SetCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488047F51FD7651B0047ED55 /* SetCardDeck.swift */; };
+		488047F81FD76D910047ED55 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488047F71FD76D910047ED55 /* SetGame.swift */; };
 		48BE93861FD50A4400AE23C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE93851FD50A4400AE23C7 /* AppDelegate.swift */; };
-		48BE93881FD50A4400AE23C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE93871FD50A4400AE23C7 /* ViewController.swift */; };
+		48BE93881FD50A4400AE23C7 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE93871FD50A4400AE23C7 /* SetViewController.swift */; };
 		48BE938B1FD50A4400AE23C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BE93891FD50A4400AE23C7 /* Main.storyboard */; };
 		48BE938D1FD50A4400AE23C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BE938C1FD50A4400AE23C7 /* Assets.xcassets */; };
 		48BE93901FD50A4400AE23C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BE938E1FD50A4400AE23C7 /* LaunchScreen.storyboard */; };
@@ -34,9 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		480975341FDA171800EB9336 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = "../../../Concentration/Concentration/Supporting Files/Extensions.swift"; sourceTree = "<group>"; };
+		488047F31FD75C7F0047ED55 /* SetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCard.swift; sourceTree = "<group>"; };
+		488047F51FD7651B0047ED55 /* SetCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardDeck.swift; sourceTree = "<group>"; };
+		488047F71FD76D910047ED55 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
 		48BE93821FD50A4400AE23C7 /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BE93851FD50A4400AE23C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		48BE93871FD50A4400AE23C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		48BE93871FD50A4400AE23C7 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
 		48BE938A1FD50A4400AE23C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48BE938C1FD50A4400AE23C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48BE938F1FD50A4400AE23C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -77,6 +85,7 @@
 		488047F21FD756210047ED55 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				480975341FDA171800EB9336 /* Extensions.swift */,
 				48BE93851FD50A4400AE23C7 /* AppDelegate.swift */,
 				48BE938E1FD50A4400AE23C7 /* LaunchScreen.storyboard */,
 			);
@@ -106,7 +115,10 @@
 		48BE93841FD50A4400AE23C7 /* Set */ = {
 			isa = PBXGroup;
 			children = (
-				48BE93871FD50A4400AE23C7 /* ViewController.swift */,
+				48BE93871FD50A4400AE23C7 /* SetViewController.swift */,
+				488047F71FD76D910047ED55 /* SetGame.swift */,
+				488047F51FD7651B0047ED55 /* SetCardDeck.swift */,
+				488047F31FD75C7F0047ED55 /* SetCard.swift */,
 				48BE93891FD50A4400AE23C7 /* Main.storyboard */,
 				48BE938C1FD50A4400AE23C7 /* Assets.xcassets */,
 				488047F21FD756210047ED55 /* Supporting Files */,
@@ -267,7 +279,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48BE93881FD50A4400AE23C7 /* ViewController.swift in Sources */,
+				488047F41FD75C7F0047ED55 /* SetCard.swift in Sources */,
+				480975351FDA171800EB9336 /* Extensions.swift in Sources */,
+				488047F61FD7651B0047ED55 /* SetCardDeck.swift in Sources */,
+				488047F81FD76D910047ED55 /* SetGame.swift in Sources */,
+				48BE93881FD50A4400AE23C7 /* SetViewController.swift in Sources */,
 				48BE93861FD50A4400AE23C7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,7 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9JN3X82564;
 				INFOPLIST_FILE = Set/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -452,7 +468,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9JN3X82564;
 				INFOPLIST_FILE = Set/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
