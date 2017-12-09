@@ -24,14 +24,16 @@ class SetViewController: UIViewController {
             print("cardButtonIndex: \(cardButtonIndex)")
         }
     }
+    @IBAction private func deal3MoreCards() {
+        game.deal3Cards()
+        updateViewFromModel()
+    }
 
     private func updateViewFromModel() {
         for cardButtonIndex in cardButtons.indices {
-            print("button index: \(cardButtonIndex)")
             let button = cardButtons[cardButtonIndex]
             if cardButtonIndex < game.cardsInPlay.count {
                 let card = game.cardsInPlay[cardButtonIndex]
-                print("displaying card: \(card)")
                 display(button, from: card)
                 button.isHidden = false
             } else {
@@ -47,6 +49,10 @@ class SetViewController: UIViewController {
     private func attributedString(from card: SetCard) -> NSAttributedString {
         var attributes = [NSAttributedStringKey : Any]()
         var buttonText: String
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        attributes[.paragraphStyle] = paragraphStyle
 
         switch card.symbol {
         case .symbol1: buttonText = "▲"

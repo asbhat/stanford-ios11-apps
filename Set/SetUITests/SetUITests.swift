@@ -12,7 +12,11 @@ class SetUITests: XCTestCase {
 
     let app = XCUIApplication()
     let predicateForCards = NSPredicate(format: "(NOT label CONTAINS[cd] %@) AND (NOT label CONTAINS[cd] %@)", "new game", "deal 3 more cards")
-    lazy var cards = app.descendants(matching: .button).matching(predicateForCards).allElementsBoundByIndex
+    var cards: [XCUIElement] {
+        return app.descendants(matching: .button).matching(predicateForCards).allElementsBoundByIndex
+    }
+
+    let startingNumberOfCards = 12
 
     let buttonNames = ["New Game", "Deal 3 More Cards"]
     let labelNames = [String]()  // TODO: fill this in with accessibility identifiers
@@ -70,15 +74,32 @@ class SetUITests: XCTestCase {
 
     // MARK: UI tests
 
-    /// Project 2 Required Task 2: Have at least 24 cards on screen
+    /// Project 2 Required Task 2: Have cards on screen.
     func testCardsAreOnScreen() {
         buttonsOnScreen(cards)
     }
 
-    /// Project 2 Required Task 2: Have at least 24 cards on screen
-    func testHaveAtLeast24Cards() {
-        print("cards.count : \(cards.count)")
-        XCTAssert(cards.count >= 24)
+    /// Project 2 Required Task 4: Deal 3 More Cards button.
+    func testDeal3MoreCards() {
+        app.buttons["Deal 3 More Cards"].tap()
+        XCTAssert(cards.count == startingNumberOfCards + 3)
+
+        app.buttons["Deal 3 More Cards"].tap()
+        XCTAssert(cards.count == startingNumberOfCards + 3 * 2)
     }
 
+    /// Project 2 Required Task 2: Have room for at least 24 cards on screen.
+    func testHaveRoomForAtLeast24Cards() {
+        let numberOfButtonPresses = (24 - startingNumberOfCards) / 3
+        for _ in 0..<numberOfButtonPresses {
+            app.buttons["Deal 3 More Cards"].tap()
+        }
+        XCTAssert(cards.count >= 24)
+        buttonsOnScreen(cards)
+    }
+
+    /// Project 2 Required Task 3: Deal 12 cards to start.
+    func testStartingNumberOfCards() {
+        XCTAssert(cards.count == startingNumberOfCards)
+    }
 }

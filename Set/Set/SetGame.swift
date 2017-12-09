@@ -21,8 +21,15 @@ struct SetGame {
 
     /// Selects a card from `cardsInPlay`.
     func selectCard(at index: Int) {}  // TODO: make a public selectACard()
-    /// Moves 3 cards (or all cards if fewer than 3 remain) from `deckOfCards` to `cardsInPlay`.
-    func deal3Cards() {}  // TODO: make a public deal3Cards()
+    /// Moves 3 cards (or all cards if fewer than 3 remain) from the `deck` to `cardsInPlay`.
+    mutating func deal3Cards() {
+        guard deck.cards.count > 0 else { return }
+        for _ in 0..<3 {
+            if let newCard = deck.draw() {
+                cardsInPlay.append(newCard)
+            }
+        }
+    }
 
     var selectedCardsMatch: Bool {
         func allUniqueOrSame<Element: Hashable>(in array: Array<Element>) -> Bool {

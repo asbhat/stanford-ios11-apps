@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480471771FDB867F0084202D /* UICard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480471761FDB867F0084202D /* UICard.swift */; };
 		480975351FDA171800EB9336 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480975341FDA171800EB9336 /* Extensions.swift */; };
 		488047F41FD75C7F0047ED55 /* SetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488047F31FD75C7F0047ED55 /* SetCard.swift */; };
 		488047F61FD7651B0047ED55 /* SetCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488047F51FD7651B0047ED55 /* SetCardDeck.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		480471761FDB867F0084202D /* UICard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICard.swift; sourceTree = "<group>"; };
 		480975341FDA171800EB9336 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = "../../../Concentration/Concentration/Supporting Files/Extensions.swift"; sourceTree = "<group>"; };
 		488047F31FD75C7F0047ED55 /* SetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCard.swift; sourceTree = "<group>"; };
 		488047F51FD7651B0047ED55 /* SetCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardDeck.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		48BE93841FD50A4400AE23C7 /* Set */ = {
 			isa = PBXGroup;
 			children = (
+				480471761FDB867F0084202D /* UICard.swift */,
 				48BE93871FD50A4400AE23C7 /* SetViewController.swift */,
 				488047F71FD76D910047ED55 /* SetGame.swift */,
 				488047F51FD7651B0047ED55 /* SetCardDeck.swift */,
@@ -284,6 +287,7 @@
 				488047F61FD7651B0047ED55 /* SetCardDeck.swift in Sources */,
 				488047F81FD76D910047ED55 /* SetGame.swift in Sources */,
 				48BE93881FD50A4400AE23C7 /* SetViewController.swift in Sources */,
+				480471771FDB867F0084202D /* UICard.swift in Sources */,
 				48BE93861FD50A4400AE23C7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,7 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 9JN3X82564;
 				INFOPLIST_FILE = Set/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -468,7 +472,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 9JN3X82564;
 				INFOPLIST_FILE = Set/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -20,16 +20,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Cot-Gp-ziC">
-                                <rect key="frame" x="16" y="60" width="343" height="418"/>
+                                <rect key="frame" x="16" y="88" width="343" height="256"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aXv-t1-6g6">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="63"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="36"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ih5-cA-S0B">
-                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ih5-cA-S0B" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="S"/>
+                                                <state key="normal" title=""/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -37,11 +37,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4mD-I2-5HQ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9Et-YY-dKZ">
-                                                <rect key="frame" x="87.666666666666671" y="0.0" width="80.000000000000014" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9Et-YY-dKZ" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="87.666666666666671" y="0.0" width="80.000000000000014" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="S E T"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -49,11 +48,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yLi-Te-XGn"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9cj-rt-v9w">
-                                                <rect key="frame" x="175.66666666666666" y="0.0" width="79.666666666666657" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9cj-rt-v9w" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="175.66666666666666" y="0.0" width="79.666666666666657" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="T"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -61,11 +59,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2z7-LD-Nme"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qNj-Ex-37T">
-                                                <rect key="frame" x="263.33333333333331" y="0.0" width="79.666666666666686" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qNj-Ex-37T" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="263.33333333333331" y="0.0" width="79.666666666666686" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="!"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -76,13 +73,12 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OmP-zI-mhR">
-                                        <rect key="frame" x="0.0" y="71" width="343" height="63"/>
+                                        <rect key="frame" x="0.0" y="44" width="343" height="36"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="N23-Po-4pn">
-                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="N23-Po-4pn" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="S"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -90,11 +86,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HXd-Zi-McC"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="jts-Ck-re4">
-                                                <rect key="frame" x="87.666666666666671" y="0.0" width="80.000000000000014" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="jts-Ck-re4" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="87.666666666666671" y="0.0" width="80.000000000000014" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="E"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -102,11 +97,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4tg-6E-xwK"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="GCi-DT-ZLD">
-                                                <rect key="frame" x="175.66666666666666" y="0.0" width="79.666666666666657" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="GCi-DT-ZLD" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="175.66666666666666" y="0.0" width="79.666666666666657" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="T"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -114,11 +108,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1qh-H3-q1D"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="VT9-Xy-1Uo">
-                                                <rect key="frame" x="263.33333333333331" y="0.0" width="79.666666666666686" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="VT9-Xy-1Uo" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="263.33333333333331" y="0.0" width="79.666666666666686" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="!"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -129,13 +122,12 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7oG-Tp-Hzm">
-                                        <rect key="frame" x="0.0" y="142" width="343" height="63"/>
+                                        <rect key="frame" x="0.0" y="88" width="343" height="36"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="vQC-fF-MJ2">
-                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="vQC-fF-MJ2" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="S"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -143,11 +135,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x4t-qP-Lt8"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="d8T-Xr-Yfe">
-                                                <rect key="frame" x="87.666666666666671" y="0.0" width="80.000000000000014" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="d8T-Xr-Yfe" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="87.666666666666671" y="0.0" width="80.000000000000014" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="E"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -155,11 +146,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hsR-zj-U53"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="yLa-of-YVP">
-                                                <rect key="frame" x="175.66666666666666" y="0.0" width="79.666666666666657" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="yLa-of-YVP" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="175.66666666666666" y="0.0" width="79.666666666666657" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="T"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -167,11 +157,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tkn-VW-iyd"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Edc-pu-Rl9">
-                                                <rect key="frame" x="263.33333333333331" y="0.0" width="79.666666666666686" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Edc-pu-Rl9" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="263.33333333333331" y="0.0" width="79.666666666666686" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="!"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -182,13 +171,12 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Oa-Aj-lMC">
-                                        <rect key="frame" x="0.0" y="213" width="343" height="63"/>
+                                        <rect key="frame" x="0.0" y="132" width="343" height="36"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Myr-cP-nj6">
-                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Myr-cP-nj6" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="S"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -196,11 +184,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qej-e8-7Cj"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="4XH-9x-EIL">
-                                                <rect key="frame" x="87.666666666666671" y="0.0" width="80.000000000000014" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="4XH-9x-EIL" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="87.666666666666671" y="0.0" width="80.000000000000014" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="E"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -208,11 +195,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rdb-69-3gD"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zbR-fq-viQ">
-                                                <rect key="frame" x="175.66666666666666" y="0.0" width="79.666666666666657" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zbR-fq-viQ" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="175.66666666666666" y="0.0" width="79.666666666666657" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="T"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -220,11 +206,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i36-nf-FdX"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Sv3-fb-0Mn">
-                                                <rect key="frame" x="263.33333333333331" y="0.0" width="79.666666666666686" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Sv3-fb-0Mn" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="263.33333333333331" y="0.0" width="79.666666666666686" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="!"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -235,13 +220,12 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3Yh-b5-Asd">
-                                        <rect key="frame" x="0.0" y="284" width="343" height="63"/>
+                                        <rect key="frame" x="0.0" y="176" width="343" height="36"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hdG-dO-hNG">
-                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hdG-dO-hNG" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="S"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -249,11 +233,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yJY-aK-ezu"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="OzG-ck-9nW">
-                                                <rect key="frame" x="87.666666666666671" y="0.0" width="80.000000000000014" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="OzG-ck-9nW" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="87.666666666666671" y="0.0" width="80.000000000000014" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="E"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -261,11 +244,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dTD-wA-9u9"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="FwD-dx-mHq">
-                                                <rect key="frame" x="175.66666666666666" y="0.0" width="79.666666666666657" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="FwD-dx-mHq" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="175.66666666666666" y="0.0" width="79.666666666666657" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="T"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -273,11 +255,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aeg-Sl-clA"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="sNQ-EA-8U6">
-                                                <rect key="frame" x="263.33333333333331" y="0.0" width="79.666666666666686" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="sNQ-EA-8U6" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="263.33333333333331" y="0.0" width="79.666666666666686" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="!"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -288,13 +269,12 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9TS-uB-97F">
-                                        <rect key="frame" x="0.0" y="355" width="343" height="63"/>
+                                        <rect key="frame" x="0.0" y="220" width="343" height="36"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="asQ-iZ-tOH">
-                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="asQ-iZ-tOH" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="S"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -302,11 +282,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uWs-nt-gub"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3tw-Jv-OSa">
-                                                <rect key="frame" x="87.666666666666671" y="0.0" width="80.000000000000014" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3tw-Jv-OSa" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="87.666666666666671" y="0.0" width="80.000000000000014" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="E"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -314,11 +293,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6oH-cg-ra0"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eRX-Ga-4lw">
-                                                <rect key="frame" x="175.66666666666666" y="0.0" width="79.666666666666657" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eRX-Ga-4lw" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="175.66666666666666" y="0.0" width="79.666666666666657" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="T"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -326,11 +304,10 @@
                                                     <action selector="selectCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mJb-K1-aLH"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="GHz-yW-BqI">
-                                                <rect key="frame" x="263.33333333333331" y="0.0" width="79.666666666666686" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="GHz-yW-BqI" customClass="UICard" customModule="Set" customModuleProvider="target">
+                                                <rect key="frame" x="263.33333333333331" y="0.0" width="79.666666666666686" height="36"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="!"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 </variation>
@@ -342,13 +319,26 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" verticalHuggingPriority="500" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8v-8E-EbB">
+                                <rect key="frame" x="201" y="44" width="158" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <state key="normal" title="Deal 3 More Cards">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deal3MoreCards" destination="BYZ-38-t0r" eventType="touchUpInside" id="nMg-Ol-MUq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="q8v-8E-EbB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HSx-TJ-ZpL"/>
+                            <constraint firstItem="Cot-Gp-ziC" firstAttribute="top" secondItem="q8v-8E-EbB" secondAttribute="bottom" constant="8" symbolic="YES" id="IMP-ek-RX7"/>
                             <constraint firstItem="Cot-Gp-ziC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="MPq-wG-9tY"/>
-                            <constraint firstItem="Cot-Gp-ziC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="RS5-pS-xq2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="q8v-8E-EbB" secondAttribute="trailing" constant="16" id="Y5m-uF-SBv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Cot-Gp-ziC" secondAttribute="trailing" constant="16" id="by2-ui-ymE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Cot-Gp-ziC" secondAttribute="bottom" constant="300" id="u9t-aM-K4l"/>
+                            <constraint firstItem="q8v-8E-EbB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="sIq-oQ-gkc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Cot-Gp-ziC" secondAttribute="bottom" constant="16" id="u9t-aM-K4l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -381,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="136.80000000000001" y="133.00492610837438"/>
         </scene>
     </scenes>
 </document>
