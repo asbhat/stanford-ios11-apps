@@ -21,6 +21,8 @@ class SetViewController: UIViewController {
     @IBOutlet private var cardButtons: [UIButton]!
     @IBAction private func selectCard(_ sender: UIButton) {
         if let cardButtonIndex = cardButtons.index(of: sender) {
+            game.selectCard(at: cardButtonIndex)
+            updateViewFromModel()
             print("cardButtonIndex: \(cardButtonIndex)")
         }
     }
@@ -35,6 +37,12 @@ class SetViewController: UIViewController {
             if cardButtonIndex < game.cardsInPlay.count {
                 let card = game.cardsInPlay[cardButtonIndex]
                 display(button, from: card)
+                if game.selectedCards.contains(card) {
+                    button.layer.borderWidth = 3.0
+                    button.layer.borderColor = UIColor.blue.cgColor
+                } else {
+                    button.layer.borderWidth = 0
+                }
                 button.isHidden = false
             } else {
                 button.isHidden = true

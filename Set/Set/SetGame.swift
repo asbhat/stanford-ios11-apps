@@ -20,7 +20,20 @@ struct SetGame {
     let startingNumberOfCards = 12
 
     /// Selects a card from `cardsInPlay`.
-    func selectCard(at index: Int) {}  // TODO: make a public selectACard()
+    mutating func selectCard(at index: Int) {
+        let card = cardsInPlay[index]
+        if selectedCards.count < 3 {
+            if selectedCards.contains(card) {
+                selectedCards.remove(at: selectedCards.index(of: card)! )
+            } else {
+                selectedCards.append(card)
+            }
+        } else {
+            selectedCards.removeAll()
+            selectedCards.append(card)
+        }
+    }
+
     /// Moves 3 cards (or all cards if fewer than 3 remain) from the `deck` to `cardsInPlay`.
     mutating func deal3Cards() {
         guard deck.cards.count > 0 else { return }
