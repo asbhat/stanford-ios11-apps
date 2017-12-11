@@ -37,9 +37,17 @@ class SetViewController: UIViewController {
             if cardButtonIndex < game.cardsInPlay.count {
                 let card = game.cardsInPlay[cardButtonIndex]
                 display(button, from: card)
+                button.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
                 if game.selectedCards.contains(card) {
                     button.layer.borderWidth = 3.0
                     button.layer.borderColor = UIColor.blue.cgColor
+                    if let isMatch = game.selectedCardsMatch {
+                        if isMatch {
+                            button.backgroundColor = #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1).withAlphaComponent(0.9)
+                        } else {
+                            button.backgroundColor = #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1).withAlphaComponent(0.9)
+                        }
+                    }
                 } else {
                     button.layer.borderWidth = 0
                 }

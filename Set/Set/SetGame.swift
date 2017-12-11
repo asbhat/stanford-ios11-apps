@@ -44,12 +44,17 @@ struct SetGame {
         }
     }
 
-    var selectedCardsMatch: Bool {
+    /**
+     Returns whether 3 selected cards are a match (`true`) or not (`false`). If not exactly 3 cards, returns `nil`.
+
+     O(n) complexity when there are 3 `selectedCards`, otherwise O(1).
+    */
+    var selectedCardsMatch: Bool? {
         func allUniqueOrSame<Element: Hashable>(in array: Array<Element>) -> Bool {
             let uniqueCount = Set(array).count
             return uniqueCount == 1 || uniqueCount == array.count
         }
-
+        guard selectedCards.count == 3 else { return nil }
         if allUniqueOrSame(in: selectedCards.map { $0.number } ),
             allUniqueOrSame(in: selectedCards.map { $0.symbol } ),
             allUniqueOrSame(in: selectedCards.map { $0.shading } ),
