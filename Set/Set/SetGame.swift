@@ -29,19 +29,16 @@ struct SetGame {
                 selectedCards.append(card)
             }
         } else {
-            if let isMatch = selectedCardsMatch, isMatch {
-                matchedCards += selectedCards
-                let _ = selectedCards.map { cardsInPlay.remove(at: cardsInPlay.index(of: $0)!) }
-                deal3Cards()
-            }
+            removeMatchedCardsFromPlay(andRun: [deal3Cards()])
             selectedCards.removeAll()
             if cardsInPlay.contains(card) { selectedCards.append(card) }
         }
     }
 
-    /// Moves 3 cards (or all cards if fewer than 3 remain) from the `deck` to `cardsInPlay`.
+    /// Moves 3 cards (or all cards if fewer than 3 remain) from the `deck` to `cardsInPlay`. If there's a match, replaces matched cards.
     mutating func deal3Cards() {
         guard deck.cards.count > 0 else { return }
+        removeMatchedCardsFromPlay()
         for _ in 0..<3 {
             if let newCard = deck.draw() {
                 cardsInPlay.append(newCard)
@@ -73,6 +70,24 @@ struct SetGame {
         assert(deck.cards.count >= startingNumberOfCards, "deck only has \(deck.cards.count) cards!")  // should always have 81 cards, but...
         for _ in 0..<startingNumberOfCards {
             cardsInPlay.append(deck.draw()!)
+        }
+    }
+
+    /**
+     If the selected cards are a match:
+     1. Adds them to `matchedCards`.
+     2. Removes them from `cardsInPlay`.
+     3. Clears all selected cards.
+     4. Runs any additional closures.
+
+     - parameter additionalFuncsIfMatched: an array of functions to run if the selected set is a match.
+    */
+    private mutating func removeMatchedCardsFromPlay(andRun additionalFuncsIfMatched: [()] = []) {
+        if let isMatch = selectedCardsMatch, isMatch {
+            matchedCards += selectedCards
+            let _ = selectedCards.map { cardsInPlay.remove(at: cardsInPlay.index(of: $0)!) }
+            selectedCards.removeAll()
+            let _ = additionalFuncsIfMatched.map { $0 }
         }
     }
 }

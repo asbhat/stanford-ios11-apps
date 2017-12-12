@@ -180,15 +180,15 @@ class SetGameTests: XCTestCase {
     /// Project 2 Required Task 8: if match, replace 3 cards on next selection.
     func testSelectCardAfterMatch() {
         let matchingIndices = findAMatchingSet()
-        let countOfCardsInPlay = game.cardsInPlay.count
+        let startingCountOfCardsInPlay = game.cardsInPlay.count
         var _ = matchingIndices.map { game.selectCard(at: $0) }
         let matchedCards = game.selectedCards
 
-        let cardsInPlayIndices = Array(0..<countOfCardsInPlay)
+        let cardsInPlayIndices = Array(0..<startingCountOfCardsInPlay)
         let newChoice = Set(cardsInPlayIndices).subtracting(Set(matchingIndices)).first!
 
         game.selectCard(at: newChoice)
-        XCTAssert(game.cardsInPlay.count == countOfCardsInPlay)
+        XCTAssert(game.cardsInPlay.count == startingCountOfCardsInPlay)
         XCTAssert(game.selectedCards.count == 1)
 
         game.selectCard(at: newChoice)
@@ -219,5 +219,28 @@ class SetGameTests: XCTestCase {
 
         game.selectCard(at: matchingIndices[0])
         XCTAssert(game.selectedCards.isEmpty)
+    }
+
+    /// Project 2 Required Task 9: replace selected cards if they're a match.
+    func testDeal3CardsWithMatch() {
+        let matchingIndices = findAMatchingSet()
+        let startingCountOfCardsInPlay = game.cardsInPlay.count
+        let _ = matchingIndices.map { game.selectCard(at: $0) }
+        game.deal3Cards()
+
+        XCTAssert(game.matchedCards.count == 3)
+        XCTAssert(game.selectedCards.isEmpty)
+        XCTAssert(game.cardsInPlay.count == startingCountOfCardsInPlay)
+    }
+
+    /// Project 2 Required Task 9: add 3 cards if selected cards are a mismatch.
+    func testDeal3CardsWithMismatch() {
+        let nonMatchingIndices = findNonMatchingSet()
+        let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+        game.deal3Cards()
+
+        XCTAssert(game.matchedCards.isEmpty)
+        XCTAssert(game.selectedCards.count == 3)
+        XCTAssert(game.cardsInPlay.count == game.startingNumberOfCards + 3)
     }
 }
