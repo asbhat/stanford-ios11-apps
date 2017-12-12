@@ -102,7 +102,7 @@ class SetGameTests: XCTestCase {
         game.deal3Cards()
         XCTAssert(game.cardsInPlay.count == game.startingNumberOfCards + 3)
 
-        let maxDraws = 81 / 3 - 1
+        let maxDraws = (81 - game.startingNumberOfCards) / 3 - 1
         for _ in 0..<maxDraws {
             game.deal3Cards()
         }
@@ -114,59 +114,110 @@ class SetGameTests: XCTestCase {
         XCTAssert(game.cardsInPlay.count == 81)
     }
 
-    /// Project 2 Required Task 5: select up to 3 cards
+    /**
+     Project 2 Required Task 5: select up to 3 cards.
+
+     Project 2 Required Task 7: if there are already 3 mismatched cards, only select new card.
+    */
     func testSelection() {
-        game.selectCard(at: 0)
+        let nonMatchingIndices = findNonMatchingSet()
+        game.selectCard(at: nonMatchingIndices[0])
         XCTAssert(game.selectedCards.count == 1)
-        XCTAssert(game.selectedCards[0] == game.cardsInPlay[0])
+        XCTAssert(game.selectedCards[0] == game.cardsInPlay[nonMatchingIndices[0]])
 
-        game.selectCard(at: 1)
+        game.selectCard(at: nonMatchingIndices[1])
         XCTAssert(game.selectedCards.count == 2)
-        XCTAssert(game.selectedCards == [ game.cardsInPlay[0], game.cardsInPlay[1] ])
+        XCTAssert(game.selectedCards == [ game.cardsInPlay[nonMatchingIndices[0]], game.cardsInPlay[nonMatchingIndices[1]] ])
 
-        game.selectCard(at: 2)
+        game.selectCard(at: nonMatchingIndices[2])
         XCTAssert(game.selectedCards.count == 3)
-        XCTAssert(game.selectedCards == [ game.cardsInPlay[0], game.cardsInPlay[1], game.cardsInPlay[2] ])
+        XCTAssert(game.selectedCards == nonMatchingIndices.map { game.cardsInPlay[$0] })
 
-        game.selectCard(at: 3)
+        game.selectCard(at: nonMatchingIndices[0])
         XCTAssert(game.selectedCards.count == 1)
-        XCTAssert(game.selectedCards[0] == game.cardsInPlay[3])
+        XCTAssert(game.selectedCards[0] == game.cardsInPlay[nonMatchingIndices[0]])
     }
 
-    /// Project 2 Required Task 5: allow deselection only when 1 or 2 cards are selected
+    /**
+     Project 2 Required Task 5: allow deselection only when 1 or 2 cards are selected.
+
+     Project 2 Required Task 7: if there are already 3 mismatched cards, deselect all of them.
+    */
     func testDeselection() {
-        // TODO: Fix for required task 7
-        game.selectCard(at: 0)
-        game.selectCard(at: 1)
+        let nonMatchingIndices = findNonMatchingSet()
+        game.selectCard(at: nonMatchingIndices[0])
+        game.selectCard(at: nonMatchingIndices[1])
         XCTAssert(game.selectedCards.count == 2)
-        XCTAssert(game.selectedCards == [ game.cardsInPlay[0], game.cardsInPlay[1] ])
+        XCTAssert(game.selectedCards == [ game.cardsInPlay[nonMatchingIndices[0]], game.cardsInPlay[nonMatchingIndices[1]] ])
 
-        game.selectCard(at: 1)
+        game.selectCard(at: nonMatchingIndices[1])
         XCTAssert(game.selectedCards.count == 1)
-        XCTAssert(game.selectedCards[0] == game.cardsInPlay[0])
+        XCTAssert(game.selectedCards[0] == game.cardsInPlay[nonMatchingIndices[0]])
 
-        game.selectCard(at: 1)
-        game.selectCard(at: 2)
-        game.selectCard(at: 2)
+        game.selectCard(at: nonMatchingIndices[1])
+        XCTAssert(game.selectedCards.count == 2)
+        game.selectCard(at: nonMatchingIndices[2])
+        XCTAssert(game.selectedCards.count == 3)
+        game.selectCard(at: nonMatchingIndices[2])
         XCTAssert(game.selectedCards.count == 1)
         XCTAssert(game.selectedCards[0] == game.cardsInPlay[2])
     }
 
     func testMatchedSet() {
         let matchingIndices = findAMatchingSet()
-        print("cardsInPlay: \(game.cardsInPlay.enumerated())")
-        print("matchingIndices: \(matchingIndices)")
         let _ = matchingIndices.map { game.selectCard(at: $0) }
-        print("selectedCards: \(game.selectedCards)")
 
         XCTAssert(game.selectedCardsMatch!)
     }
 
     func testSelectedNotMatched() {
         let nonMatchingIndices = findNonMatchingSet()
-
         let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
 
         XCTAssertFalse(game.selectedCardsMatch!)
+    }
+
+    /// Project 2 Required Task 8: if match, replace 3 cards on next selection.
+    func testSelectCardAfterMatch() {
+        let matchingIndices = findAMatchingSet()
+        let countOfCardsInPlay = game.cardsInPlay.count
+        var _ = matchingIndices.map { game.selectCard(at: $0) }
+        let matchedCards = game.selectedCards
+
+        let cardsInPlayIndices = Array(0..<countOfCardsInPlay)
+        let newChoice = Set(cardsInPlayIndices).subtracting(Set(matchingIndices)).first!
+
+        game.selectCard(at: newChoice)
+        XCTAssert(game.cardsInPlay.count == countOfCardsInPlay)
+        XCTAssert(game.selectedCards.count == 1)
+
+        game.selectCard(at: newChoice)
+        _ = matchingIndices.map { game.selectCard(at: $0) }
+        XCTAssert(matchedCards != game.selectedCards)
+    }
+
+    /// Project 2 Required Task 8: if the deck is empty, then matched cards can't be replaced.
+    func testSelectCardAfterMatchWithEmptyDeck() {
+        let maxDraws = (81 - game.startingNumberOfCards) / 3
+        for _ in 0..<maxDraws {
+            game.deal3Cards()
+        }
+        XCTAssert(game.cardsInPlay.count == 81)
+
+        let matchingIndices = findAMatchingSet()
+        let _ = matchingIndices.map { game.selectCard(at: $0) }
+
+        game.selectCard(at: 0)
+        XCTAssert(game.cardsInPlay.count == 78)
+    }
+
+    /// Project 2 Required Task 8: if a matched card is chosen, no card should be selected.
+    func testSelectMatchedCardAfterMatch() {
+        let matchingIndices = findAMatchingSet()
+        let _ = matchingIndices.map { game.selectCard(at: $0) }
+        XCTAssert(game.selectedCards.count == 3)
+
+        game.selectCard(at: matchingIndices[0])
+        XCTAssert(game.selectedCards.isEmpty)
     }
 }

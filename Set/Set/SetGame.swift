@@ -29,8 +29,13 @@ struct SetGame {
                 selectedCards.append(card)
             }
         } else {
+            if let isMatch = selectedCardsMatch, isMatch {
+                matchedCards += selectedCards
+                let _ = selectedCards.map { cardsInPlay.remove(at: cardsInPlay.index(of: $0)!) }
+                deal3Cards()
+            }
             selectedCards.removeAll()
-            selectedCards.append(card)
+            if cardsInPlay.contains(card) { selectedCards.append(card) }
         }
     }
 
