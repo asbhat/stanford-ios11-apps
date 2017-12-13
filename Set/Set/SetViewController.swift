@@ -18,6 +18,7 @@ class SetViewController: UIViewController {
         resetGame()
     }
 
+    @IBOutlet private weak var deal: UIButton!
     @IBOutlet private var cardButtons: [UIButton]!
     @IBAction private func selectCard(_ sender: UIButton) {
         if let cardButtonIndex = cardButtons.index(of: sender) {
@@ -27,8 +28,30 @@ class SetViewController: UIViewController {
         }
     }
     @IBAction private func deal3MoreCards() {
+        guard canDeal3Cards else { return }
         game.deal3Cards()
         updateViewFromModel()
+    }
+
+    private var canDeal3Cards = true {
+        willSet {
+            var attributes = [NSAttributedStringKey : Any]()
+            if newValue {
+                attributes[.strikethroughStyle] = NSUnderlineStyle.styleNone.rawValue
+                UIView.performWithoutAnimation {
+                    deal.setAttributedTitle(NSAttributedString(string: deal.currentTitle!, attributes: attributes), for: .normal)
+                    deal.alpha = 1.0
+                    deal.layoutIfNeeded()
+                }
+            } else {
+                attributes[.strikethroughStyle] = NSUnderlineStyle.styleThick.rawValue
+                UIView.performWithoutAnimation {
+                    deal.setAttributedTitle(NSAttributedString(string: deal.currentTitle!, attributes: attributes), for: .normal)
+                    deal.alpha = 0.4
+                    deal.layoutIfNeeded()
+                }
+            }
+        }
     }
 
     private func updateViewFromModel() {
@@ -56,6 +79,7 @@ class SetViewController: UIViewController {
                 button.isHidden = true
             }
         }
+        updateDealAbility()
     }
 
     private func display(_ button: UIButton, from card: SetCard) {
@@ -98,6 +122,20 @@ class SetViewController: UIViewController {
     func resetGame() {
         game = SetGame()
         updateViewFromModel()
+    }
+
+    /**
+     Disables the `Deal 3 More Cards` button if:
+     1. There are no more cards in the Set deck or
+     2. There is no more room in the UI to fit 3 more cards
+
+     _Note: there is always room for 3 more cards if the 3 currently-selected cards are a match since you replace them._
+    */
+    private func updateDealAbility() {
+        if game.deckIsEmpty { canDeal3Cards = false }
+        else if let isMatch = game.selectedCardsMatch, isMatch { canDeal3Cards = true }
+        else if game.cardsInPlay.count > (cardButtons.count - 3) { canDeal3Cards = false }
+        else { canDeal3Cards = true }
     }
 
 }

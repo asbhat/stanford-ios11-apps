@@ -18,6 +18,9 @@ struct SetGame {
     private(set) var matchedCards = [SetCard]()
 
     let startingNumberOfCards = 12
+    var deckIsEmpty: Bool {
+        return deck.cards.count == 0
+    }
 
     /// Selects a card from `cardsInPlay`.
     mutating func selectCard(at index: Int) {
