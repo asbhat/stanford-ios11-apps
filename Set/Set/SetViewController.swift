@@ -10,7 +10,8 @@ import UIKit
 
 class SetViewController: UIViewController {
 
-    private var game = SetGame()
+    // MARK: Public implementation
+
     let startingNumberOfCards = 12
 
     override func viewDidLoad() {
@@ -18,6 +19,17 @@ class SetViewController: UIViewController {
         resetGame()
     }
 
+    // MARK: Private implementation
+
+    private var game = SetGame()
+
+    @IBAction private func startNewGame() {
+        let confirmNewGame = UIAlertController(title: "New Game?", message: "Are you sure? All progress will be lost.", preferredStyle: .alert)
+        confirmNewGame.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in self.resetGame()}))
+        confirmNewGame.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        self.present(confirmNewGame, animated: true)
+    }
     @IBOutlet private weak var deal: UIButton!
     @IBOutlet private var cardButtons: [UIButton]!
     @IBAction private func selectCard(_ sender: UIButton) {
@@ -32,6 +44,7 @@ class SetViewController: UIViewController {
         game.deal3Cards()
         updateViewFromModel()
     }
+    @IBOutlet weak var score: UILabel!
 
     private var canDeal3Cards = true {
         willSet {
@@ -59,7 +72,7 @@ class SetViewController: UIViewController {
             let button = cardButtons[cardButtonIndex]
             if cardButtonIndex < game.cardsInPlay.count {
                 let card = game.cardsInPlay[cardButtonIndex]
-                display(button, from: card)
+                button.setAttributedTitle(attributedString(from: card), for: .normal)
                 button.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
                 if game.selectedCards.contains(card) {
                     button.layer.borderWidth = 3.0
@@ -80,10 +93,7 @@ class SetViewController: UIViewController {
             }
         }
         updateDealAbility()
-    }
-
-    private func display(_ button: UIButton, from card: SetCard) {
-        button.setAttributedTitle(attributedString(from: card), for: .normal)
+        score.text = "Score: \(game.score)"
     }
 
     private func attributedString(from card: SetCard) -> NSAttributedString {
@@ -119,7 +129,7 @@ class SetViewController: UIViewController {
         return NSAttributedString(string: buttonText, attributes: attributes)
     }
 
-    func resetGame() {
+    private func resetGame() {
         game = SetGame()
         updateViewFromModel()
     }

@@ -19,7 +19,7 @@ class SetUITests: XCTestCase {
     let startingNumberOfCards = 12
 
     let buttonNames = ["New Game", "Deal 3 More Cards"]
-    let labelNames = [String]()  // TODO: fill this in with accessibility identifiers
+    let labelNames = ["scoreUILabel"]
 
     override func setUp() {
         super.setUp()
@@ -74,8 +74,36 @@ class SetUITests: XCTestCase {
 
     // MARK: UI tests
 
-    /// Project 2 Required Task 2: Have cards on screen.
-    func testCardsAreOnScreen() {
+    func testLabelsOnScreenWithRotation() {
+        labelsExist(labelNames)
+        labelsOnScreen(labelNames)
+        sleep(2)
+
+        XCUIDevice.shared.orientation = .landscapeLeft
+        labelsExist(labelNames)
+        labelsOnScreen(labelNames)
+        sleep(2)
+
+        XCUIDevice.shared.orientation = .landscapeRight
+        labelsExist(labelNames)
+        labelsOnScreen(labelNames)
+        sleep(2)
+    }
+
+    /**
+     Project 2 Required Task 2: Have cards on screen.
+
+     Project 2 Required Task 15: UI nicely laid out in portrait and landscape
+    */
+    func testCardsAreOnScreenWithRotation() {
+        buttonsOnScreen(cards)
+        sleep(2)
+
+        XCUIDevice.shared.orientation = .landscapeLeft
+        buttonsOnScreen(cards)
+        sleep(2)
+
+        XCUIDevice.shared.orientation = .landscapeRight
         buttonsOnScreen(cards)
     }
 
@@ -88,7 +116,11 @@ class SetUITests: XCTestCase {
         XCTAssert(cards.count == startingNumberOfCards + 3 * 2)
     }
 
-    /// Project 2 Required Task 2: Have room for at least 24 cards on screen.
+    /**
+     Project 2 Required Task 2: Have room for at least 24 cards on screen.
+
+     Project 2 Required Task 15: UI nicely laid out in portrait
+    */
     func testHaveRoomForAtLeast24Cards() {
         let numberOfButtonPresses = (24 - startingNumberOfCards) / 3
         for _ in 0..<numberOfButtonPresses {
@@ -96,10 +128,53 @@ class SetUITests: XCTestCase {
         }
         XCTAssert(cards.count >= 24)
         buttonsOnScreen(cards)
+        buttonsOnScreen(buttonNames)
+        labelsOnScreen(labelNames)
+        sleep(2)
+
+        XCUIDevice.shared.orientation = .landscapeLeft
+        buttonsOnScreen(cards)
+        buttonsOnScreen(buttonNames)
+        labelsOnScreen(labelNames)
+        sleep(2)
+
+        XCUIDevice.shared.orientation = .landscapeRight
+        buttonsOnScreen(cards)
+        buttonsOnScreen(buttonNames)
+        labelsOnScreen(labelNames)
     }
 
     /// Project 2 Required Task 3: Deal 12 cards to start.
     func testStartingNumberOfCards() {
         XCTAssert(cards.count == startingNumberOfCards)
+    }
+
+    /// Project 2 Required Task 16: Scoring label
+    func testScoreLabel() {
+        XCTAssert(app.staticTexts["Score: 0.0"].exists)
+
+        for i in 0..<3 {
+            cards[i].tap()
+        }
+        XCTAssertFalse(app.staticTexts["Score: 0.0"].exists)
+    }
+
+    /// Project 2 Required Task 16: New game button.
+    func testNewGameButton() {
+        let numberOfDraws = 3
+        for _ in 0..<numberOfDraws { app.buttons["Deal 3 More Cards"].tap() }
+        for i in 0..<3 { cards[i].tap() }
+        XCTAssert(cards.count > startingNumberOfCards)
+        XCTAssertFalse(app.staticTexts["Score: 0.0"].exists)
+
+        app.buttons["New Game"].tap()
+        app.alerts["New Game?"].buttons["Cancel"].tap()
+        XCTAssert(cards.count > startingNumberOfCards)
+        XCTAssertFalse(app.staticTexts["Score: 0.0"].exists)
+
+        app.buttons["New Game"].tap()
+        app.alerts["New Game?"].buttons["OK"].tap()
+        XCTAssert(cards.count == startingNumberOfCards)
+        XCTAssert(app.staticTexts["Score: 0.0"].exists)
     }
 }

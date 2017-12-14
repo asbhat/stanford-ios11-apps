@@ -100,9 +100,9 @@ class SetGameTests: XCTestCase {
     /// Project 2 Required Task 4: "Deal 3 More Cards."
     func testDeal3Cards() {
         game.deal3Cards()
-        XCTAssert(game.cardsInPlay.count == game.startingNumberOfCards + 3)
+        XCTAssert(game.cardsInPlay.count == SetGame.startingNumberOfCards + 3)
 
-        let maxDraws = (81 - game.startingNumberOfCards) / 3 - 1
+        let maxDraws = (81 - SetGame.startingNumberOfCards) / 3 - 1
         for _ in 0..<maxDraws {
             game.deal3Cards()
         }
@@ -196,9 +196,26 @@ class SetGameTests: XCTestCase {
         XCTAssert(matchedCards != game.selectedCards)
     }
 
+    func testSelectCardAfterMismatch() {
+        let nonMatchingIndices = findNonMatchingSet()
+        let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+        let nonMatchingCards = game.selectedCards
+
+        let cardsInPlayIndices = Array(0..<game.cardsInPlay.count)
+        let newChoice = Set(cardsInPlayIndices).subtracting(Set(nonMatchingIndices)).first!
+
+        game.selectCard(at: newChoice)
+        XCTAssert(game.cardsInPlay.count == SetGame.startingNumberOfCards)
+        XCTAssert(game.selectedCards.count == 1)
+
+        game.selectCard(at: newChoice)
+        let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+        XCTAssert(nonMatchingCards == game.selectedCards)
+    }
+
     /// Project 2 Required Task 8: if the deck is empty, then matched cards can't be replaced.
     func testSelectCardAfterMatchWithEmptyDeck() {
-        let maxDraws = (81 - game.startingNumberOfCards) / 3
+        let maxDraws = (81 - SetGame.startingNumberOfCards) / 3
         for _ in 0..<maxDraws {
             game.deal3Cards()
         }
@@ -241,6 +258,6 @@ class SetGameTests: XCTestCase {
 
         XCTAssert(game.matchedCards.isEmpty)
         XCTAssert(game.selectedCards.count == 3)
-        XCTAssert(game.cardsInPlay.count == game.startingNumberOfCards + 3)
+        XCTAssert(game.cardsInPlay.count == SetGame.startingNumberOfCards + 3)
     }
 }

@@ -10,16 +10,11 @@ import Foundation
 
 struct SetGame {
 
-    private var deck = SetCardDeck()
+    // MARK: Public implementation
 
-    private(set) var cardsInPlay = [SetCard]()
-    /// Cards selected to try and create a match. Always a subset of `cardsInPlay`.
-    private(set) var selectedCards = [SetCard]()
-    private(set) var matchedCards = [SetCard]()
-
-    let startingNumberOfCards = 12
-    var deckIsEmpty: Bool {
-        return deck.cards.count == 0
+    static let startingNumberOfCards = 12
+    var score: Double {
+        return scoring.currentScore
     }
 
     /// Selects a card from `cardsInPlay`.
@@ -28,11 +23,13 @@ struct SetGame {
         if selectedCards.count < 3 {
             if selectedCards.contains(card) {
                 selectedCards.remove(at: selectedCards.index(of: card)! )
+                scoring.updateForDeselection(withCountOfCardsInPlay: cardsInPlay.count)
             } else {
                 selectedCards.append(card)
             }
+            scoring.updateFor(match: selectedCardsMatch, withCountOfCardsInPlay: cardsInPlay.count)
         } else {
-            removeMatchedCardsFromPlay(andRun: [deal3Cards()])
+            removeMatchedCardsFromPlay(andDeal3Cards: true)
             selectedCards.removeAll()
             if cardsInPlay.contains(card) { selectedCards.append(card) }
         }
@@ -49,11 +46,28 @@ struct SetGame {
         }
     }
 
+    init() {
+        assert(deck.cards.count >= SetGame.startingNumberOfCards, "deck only has \(deck.cards.count) cards!")  // should always have 81 cards, but...
+        for _ in 0..<SetGame.startingNumberOfCards {
+            cardsInPlay.append(deck.draw()!)
+        }
+    }
+
+    // MARK: Public read-only
+
+    var deckIsEmpty: Bool {
+        return deck.cards.count == 0
+    }
+    private(set) var cardsInPlay = [SetCard]()
+    /// Cards selected to try and create a match. Always a subset of `cardsInPlay`.
+    private(set) var selectedCards = [SetCard]()
+    private(set) var matchedCards = [SetCard]()
+
     /**
      Returns whether 3 selected cards are a match (`true`) or not (`false`). If not exactly 3 cards, returns `nil`.
 
      O(n) complexity when there are 3 `selectedCards`, otherwise O(1).
-    */
+     */
     var selectedCardsMatch: Bool? {
         func allUniqueOrSame<Element: Hashable>(in array: Array<Element>) -> Bool {
             let uniqueCount = Set(array).count
@@ -69,28 +83,60 @@ struct SetGame {
         return false
     }
 
-    init() {
-        assert(deck.cards.count >= startingNumberOfCards, "deck only has \(deck.cards.count) cards!")  // should always have 81 cards, but...
-        for _ in 0..<startingNumberOfCards {
-            cardsInPlay.append(deck.draw()!)
-        }
-    }
+    // MARK: Private implementation
+
+    private var deck = SetCardDeck()
+    private var scoring = Scoring(startingNumberOfCards: SetGame.startingNumberOfCards)
 
     /**
      If the selected cards are a match:
      1. Adds them to `matchedCards`.
      2. Removes them from `cardsInPlay`.
      3. Clears all selected cards.
-     4. Runs any additional closures.
+     4. Deals 3 more cards if parameter is `true`.
 
-     - parameter additionalFuncsIfMatched: an array of functions to run if the selected set is a match.
+     - parameter andDeal3Cards: if `true` deals 3 more cards.
     */
-    private mutating func removeMatchedCardsFromPlay(andRun additionalFuncsIfMatched: [()] = []) {
+    private mutating func removeMatchedCardsFromPlay(andDeal3Cards: Bool = false) {
         if let isMatch = selectedCardsMatch, isMatch {
             matchedCards += selectedCards
             let _ = selectedCards.map { cardsInPlay.remove(at: cardsInPlay.index(of: $0)!) }
             selectedCards.removeAll()
-            let _ = additionalFuncsIfMatched.map { $0 }
+            if andDeal3Cards { deal3Cards() }
         }
     }
+}
+
+fileprivate struct Scoring {
+
+    let startingNumberOfCards: Int
+
+    let pointsPerMatch: Double = 3
+    /// Penalty for each mismatch (should be negative).
+    let pointsPerMismatch: Double = -5
+    /// Penalty for each deselection (should be negative).
+    let pointsPerDeselection: Double = -1
+    let maxDecimalPlaces = 1
+
+    mutating func updateForDeselection(withCountOfCardsInPlay: Int) {
+        currentScore += pointsPerDeselection * ( Double(withCountOfCardsInPlay) / Double(startingNumberOfCards) )
+        currentScore = currentScore.rounded(toDecimalPlaces: maxDecimalPlaces)
+    }
+
+    mutating func updateFor(match: Bool?, withCountOfCardsInPlay: Int) {
+        if let isMatch = match {
+            if isMatch {
+                currentScore += pointsPerMatch * ( Double(startingNumberOfCards) / Double(withCountOfCardsInPlay) )
+            } else {
+                currentScore += pointsPerMismatch * ( Double(withCountOfCardsInPlay) / Double(startingNumberOfCards) )
+            }
+            currentScore = currentScore.rounded(toDecimalPlaces: maxDecimalPlaces)
+        }
+    }
+
+    init(startingNumberOfCards: Int) {
+        self.startingNumberOfCards = startingNumberOfCards
+    }
+
+    private(set) var currentScore = 0.0
 }
