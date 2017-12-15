@@ -117,6 +117,7 @@ fileprivate struct Scoring {
     /// Penalty for each deselection (should be negative).
     let pointsPerDeselection: Double = -1
     let maxDecimalPlaces = 1
+    let maxSeconds: Double = 30
 
     mutating func updateForDeselection(withCountOfCardsInPlay: Int) {
         currentScore += pointsPerDeselection * ( Double(withCountOfCardsInPlay) / Double(startingNumberOfCards) )
@@ -126,11 +127,12 @@ fileprivate struct Scoring {
     mutating func updateFor(match: Bool?, withCountOfCardsInPlay: Int) {
         if let isMatch = match {
             if isMatch {
-                currentScore += pointsPerMatch * ( Double(startingNumberOfCards) / Double(withCountOfCardsInPlay) )
+                currentScore += pointsPerMatch * ( Double(startingNumberOfCards) / Double(withCountOfCardsInPlay) ) * max( maxSeconds / -lastMatchAttempt.timeIntervalSinceNow, 1 )
             } else {
-                currentScore += pointsPerMismatch * ( Double(withCountOfCardsInPlay) / Double(startingNumberOfCards) )
+                currentScore += pointsPerMismatch * ( Double(withCountOfCardsInPlay) / Double(startingNumberOfCards) ) * min( max( -lastMatchAttempt.timeIntervalSinceNow, 1 ), maxSeconds)
             }
             currentScore = currentScore.rounded(toDecimalPlaces: maxDecimalPlaces)
+            lastMatchAttempt = Date()
         }
     }
 
@@ -139,4 +141,5 @@ fileprivate struct Scoring {
     }
 
     private(set) var currentScore = 0.0
+    private var lastMatchAttempt = Date()
 }

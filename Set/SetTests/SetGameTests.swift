@@ -260,4 +260,64 @@ class SetGameTests: XCTestCase {
         XCTAssert(game.selectedCards.count == 3)
         XCTAssert(game.cardsInPlay.count == SetGame.startingNumberOfCards + 3)
     }
+
+    /// Project 2 Required Task 16: score increases for match
+    func testScoringForMatch() {
+        let startingScore = game.score
+
+        let matchingIndices = findAMatchingSet()
+        let _ = matchingIndices.map { game.selectCard(at: $0) }
+
+        XCTAssert(game.score > startingScore)
+    }
+
+    /// Project 2 Required Task 16: score decreases for mismatch
+    func testScoringForMismatch() {
+        let startingScore = game.score
+
+        let nonMatchingIndices = findNonMatchingSet()
+        let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+
+        XCTAssert(game.score < startingScore)
+    }
+
+    /// Project 2 Required Task 16: score decreases for deselection
+    func testScoringForDeselection() {
+        let startingScore = game.score
+        game.selectCard(at: 0)
+        game.selectCard(at: 0)
+        XCTAssert(game.score < startingScore)
+    }
+
+    /// Project 2 Extra Credit 1: score incorporates speed of play
+    func testScoringForQuickAndSlowMatches() {
+        let startingScore = game.score
+
+        var matchingIndices = findAMatchingSet()
+        let _ = matchingIndices.map { game.selectCard(at: $0) }
+        let quickMatchScoreIncrease = game.score - startingScore
+
+        sleep(3)
+        matchingIndices = findAMatchingSet()
+        let _ = matchingIndices.map { game.selectCard(at: $0) }
+        let slowMatchScoreIncrease = game.score - quickMatchScoreIncrease - startingScore
+
+        XCTAssert(quickMatchScoreIncrease > slowMatchScoreIncrease)
+    }
+
+    /// Project 2 Extra Credit 1: score incorporates speed of play
+    func testScoringForQuickAndSlowMismatches() {
+        let startingScore = game.score
+
+        var nonMatchingIndices = findNonMatchingSet()
+        let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+        let quickMismatchScoreDecrease = startingScore - game.score
+
+        sleep(3)
+        nonMatchingIndices = findNonMatchingSet()
+        let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+        let slowMismatchScoreDecrease = startingScore - quickMismatchScoreDecrease - game.score
+
+        XCTAssert(slowMismatchScoreDecrease > quickMismatchScoreDecrease)
+    }
 }
