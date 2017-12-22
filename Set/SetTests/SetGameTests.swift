@@ -419,4 +419,28 @@ class SetGameTests: XCTestCase {
 
         XCTAssert(scoreBeforeDeal == game.score)
     }
+
+    /// Project 2 Extra Credit 3: create a 'cheat' button (penalty for 'cheating')
+    func testScoringForHintWithMatch() {
+        _ = findAMatchingSet()
+        let startingScore = game.score
+
+        _ = game.giveMeAHint()
+        XCTAssert(game.score < startingScore)
+    }
+
+    func testScoringForHintWithNoMatch() {
+        var matchingIndices = findAMatchingSetWithoutDealing()
+        var lastScore = game.score
+
+        while matchingIndices != nil {
+            _ = matchingIndices!.map { game.selectCard(at: $0) }
+            game.selectCard(at: matchingIndices![0])
+            lastScore = game.score
+            matchingIndices = findAMatchingSetWithoutDealing()
+        }
+
+        _ = game.giveMeAHint()
+        XCTAssert(game.score == lastScore)
+    }
 }

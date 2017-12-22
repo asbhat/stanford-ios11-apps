@@ -31,18 +31,22 @@ class SetViewController: UIViewController {
         self.present(confirmNewGame, animated: true)
     }
     @IBOutlet private weak var deal: UIButton!
-    @IBOutlet private var cardButtons: [UIButton]!
-    @IBAction private func selectCard(_ sender: UIButton) {
+    @IBOutlet private var cardButtons: [UICard]!
+    @IBAction private func selectCard(_ sender: UICard) {
         if let cardButtonIndex = cardButtons.index(of: sender) {
             game.selectCard(at: cardButtonIndex)
             updateViewFromModel()
-            print("cardButtonIndex: \(cardButtonIndex)")
         }
     }
     @IBAction private func deal3MoreCards() {
         guard canDeal3Cards else { return }
         game.deal3Cards()
         updateViewFromModel()
+    }
+    @IBAction func displayHint() {
+        if let matchingIndices = game.giveMeAHint() {
+            _ = matchingIndices.map { cardButtons[$0].emphasize() }
+        }
     }
     @IBOutlet weak var score: UILabel!
 

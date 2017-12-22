@@ -64,6 +64,15 @@ struct SetGame {
         }
     }
 
+    /// Returns the indices of a matching set within `cardsInPlay`. If no set exists, returns `nil`.
+    mutating func giveMeAHint() -> [Int]? {
+        let matchingIndices = findMatchingSetCardIndicesInPlay()
+        if matchingIndices != nil {
+            scoring.updateForHint()
+        }
+        return matchingIndices
+    }
+
     // MARK: Public read-only
 
     var deckIsEmpty: Bool {
@@ -151,6 +160,8 @@ fileprivate struct Scoring {
         static let deselection = -1.0
         /// Penalty for each `deal3Cards()` when a set already exists in play (should be negative).
         static let dealWithSet = -3.0
+        /// Penalty for each hint (should be negative).
+        static let hint = -5.0
     }
 
     let maxDecimalPlaces = 1
@@ -176,6 +187,10 @@ fileprivate struct Scoring {
 
     mutating func updateForDealWithExistingSet() {
         currentScore += PointsPer.dealWithSet.rounded(toDecimalPlaces: maxDecimalPlaces)
+    }
+
+    mutating func updateForHint() {
+        currentScore += PointsPer.hint.rounded(toDecimalPlaces: maxDecimalPlaces)
     }
 
     private(set) var currentScore = 0.0

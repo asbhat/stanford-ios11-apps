@@ -21,4 +21,28 @@ class UICard: UIButton {
         layer.cornerRadius = 8
     }
 
+    func emphasize() {
+        let startingBackground = self.backgroundColor
+        UIView.animate(
+            withDuration: 1.0,
+            delay: 0,
+            options: UIViewAnimationOptions.allowUserInteraction,
+            animations: { self.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1) },
+            completion: { _ in self.deemphasize(backTo: startingBackground) }
+        )
+        layoutSubviews()
+    }
+
+    private func deemphasize(backTo color: UIColor?) {
+        let backgroundColor = color ?? #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+        UIView.animate(
+            withDuration: 1.0,
+            delay: 0,
+            options: UIViewAnimationOptions.allowUserInteraction,
+            animations: { self.backgroundColor = backgroundColor },
+            completion: nil
+        )
+        layoutSubviews()
+    }
+
 }

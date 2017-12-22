@@ -335,7 +335,7 @@
                                     <action selector="startNewGame" destination="BYZ-38-t0r" eventType="touchUpInside" id="wwa-oI-F0E"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Eh-OU-cf4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Eh-OU-cf4">
                                 <rect key="frame" x="99.000000000000014" y="718" width="177.33333333333337" height="60"/>
                                 <accessibility key="accessibilityConfiguration" identifier="scoreUILabel"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
@@ -345,20 +345,52 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzR-Bi-i0C">
+                                <rect key="frame" x="35" y="730" width="37" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Hint"/>
+                                <connections>
+                                    <action selector="displayHint" destination="BYZ-38-t0r" eventType="touchUpInside" id="r2P-Gk-P9y"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56L-t4-gFu">
+                                <rect key="frame" x="16" y="747.66666666666663" width="19" height="0.0"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" identifier="leadingDummySpacerViewForHintButton"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="jeS-b6-byk"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZW-d4-hdr">
+                                <rect key="frame" x="72" y="748.66666666666663" width="19" height="0.0"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" identifier="trailingDummySpacerViewForHintButton"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="GT5-es-qod"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="q8v-8E-EbB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HSx-TJ-ZpL"/>
                             <constraint firstItem="Cot-Gp-ziC" firstAttribute="top" secondItem="q8v-8E-EbB" secondAttribute="bottom" constant="8" symbolic="YES" id="IMP-ek-RX7"/>
+                            <constraint firstItem="pzR-Bi-i0C" firstAttribute="centerY" secondItem="5Eh-OU-cf4" secondAttribute="centerY" id="Kh9-zX-2lv"/>
                             <constraint firstItem="Cot-Gp-ziC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="MPq-wG-9tY"/>
+                            <constraint firstItem="56L-t4-gFu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ONj-Je-CcT"/>
+                            <constraint firstItem="pzR-Bi-i0C" firstAttribute="leading" secondItem="56L-t4-gFu" secondAttribute="trailing" id="P0o-p5-Zwx"/>
+                            <constraint firstItem="VZW-d4-hdr" firstAttribute="width" secondItem="56L-t4-gFu" secondAttribute="width" id="SFj-as-Vc8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5Eh-OU-cf4" secondAttribute="bottom" id="VG0-u4-z78"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="q8v-8E-EbB" secondAttribute="trailing" constant="16" id="Y5m-uF-SBv"/>
                             <constraint firstItem="5Eh-OU-cf4" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="YyP-Pf-KZZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Cot-Gp-ziC" secondAttribute="trailing" constant="16" id="by2-ui-ymE"/>
+                            <constraint firstItem="VZW-d4-hdr" firstAttribute="centerY" secondItem="5Eh-OU-cf4" secondAttribute="centerY" id="c0n-5J-9Dt"/>
                             <constraint firstItem="q8v-8E-EbB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3sc-fX-V3Z" secondAttribute="trailing" constant="8" symbolic="YES" id="eva-0T-pjm"/>
                             <constraint firstItem="3sc-fX-V3Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="g4f-K8-PHF"/>
+                            <constraint firstItem="56L-t4-gFu" firstAttribute="centerY" secondItem="5Eh-OU-cf4" secondAttribute="centerY" id="hOz-re-Gfu"/>
+                            <constraint firstItem="5Eh-OU-cf4" firstAttribute="leading" secondItem="VZW-d4-hdr" secondAttribute="trailing" constant="8" symbolic="YES" id="hzW-3L-TAX"/>
                             <constraint firstItem="3sc-fX-V3Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="nKj-ew-Kzi"/>
                             <constraint firstItem="5Eh-OU-cf4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Cot-Gp-ziC" secondAttribute="bottom" constant="16" id="u9t-aM-K4l"/>
+                            <constraint firstItem="VZW-d4-hdr" firstAttribute="leading" secondItem="pzR-Bi-i0C" secondAttribute="trailing" id="v1t-4C-G25"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

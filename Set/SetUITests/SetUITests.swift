@@ -11,15 +11,18 @@ import XCTest
 class SetUITests: XCTestCase {
 
     let app = XCUIApplication()
-    let predicateForCards = NSPredicate(format: "(NOT label CONTAINS[cd] %@) AND (NOT label CONTAINS[cd] %@)", "new game", "deal 3 more cards")
-    var cards: [XCUIElement] {
-        return app.descendants(matching: .button).matching(predicateForCards).allElementsBoundByIndex
-    }
 
     let startingNumberOfCards = 12
 
-    let buttonNames = ["New Game", "Deal 3 More Cards"]
+    let buttonNames = ["New Game", "Deal 3 More Cards", "Hint"]
     let labelNames = ["scoreUILabel"]
+
+    var predicateForCards: NSPredicate {
+        return NSPredicate(format: "NOT (label IN %@)", buttonNames)
+    }
+    var cards: [XCUIElement] {
+        return app.descendants(matching: .button).matching(predicateForCards).allElementsBoundByIndex
+    }
 
     override func setUp() {
         super.setUp()
@@ -110,7 +113,7 @@ class SetUITests: XCTestCase {
     /// Project 2 Required Task 4: Deal 3 More Cards button.
     func testDeal3MoreCards() {
         app.buttons["Deal 3 More Cards"].tap()
-        XCTAssert(cards.count == startingNumberOfCards + 3)
+        XCTAssert(cards.count == startingNumberOfCards + 3, "cardCount: \(cards.count)\t startingCards: \(startingNumberOfCards)")
 
         app.buttons["Deal 3 More Cards"].tap()
         XCTAssert(cards.count == startingNumberOfCards + 3 * 2)
