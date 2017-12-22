@@ -13,6 +13,11 @@ class SetGameTests: XCTestCase {
 
     var game = SetGame()
 
+    override func setUp() {
+        super.setUp()
+        game = SetGame()
+    }
+
     // MARK: Helper functions
 
     private func findMatching(_ numbers: Set<SetCard.SetNumber>) -> SetCard.SetNumber {
@@ -70,6 +75,26 @@ class SetGameTests: XCTestCase {
         }
         game.deal3Cards()
         return findAMatchingSet()
+    }
+
+    private func findAMatchingSetWithoutDealing() -> [Int]? {
+        for index1 in 0..<(game.cardsInPlay.count-2) {
+            for index2 in (index1+1)..<(game.cardsInPlay.count-1) {
+                let cards = [ game.cardsInPlay[index1], game.cardsInPlay[index2] ]
+
+                let matchingCard = SetCard(
+                    number: findMatching(Set(cards.map {$0.number} )),
+                    symbol: findMatching(Set(cards.map {$0.symbol} )),
+                    shading: findMatching(Set(cards.map {$0.shading} )),
+                    color: findMatching(Set(cards.map {$0.color} ))
+                )
+
+                if let matchingCardIndex = game.cardsInPlay[(index2+1)..<game.cardsInPlay.count].index(of: matchingCard) {
+                    return [index1, index2, matchingCardIndex]
+                }
+            }
+        }
+        return nil
     }
 
     private func findNonMatchingSet() -> [Int] {
@@ -165,14 +190,14 @@ class SetGameTests: XCTestCase {
 
     func testMatchedSet() {
         let matchingIndices = findAMatchingSet()
-        let _ = matchingIndices.map { game.selectCard(at: $0) }
+        _ = matchingIndices.map { game.selectCard(at: $0) }
 
         XCTAssert(game.selectedCardsMatch!)
     }
 
     func testSelectedNotMatched() {
         let nonMatchingIndices = findNonMatchingSet()
-        let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+        _ = nonMatchingIndices.map { game.selectCard(at: $0) }
 
         XCTAssertFalse(game.selectedCardsMatch!)
     }
@@ -181,7 +206,7 @@ class SetGameTests: XCTestCase {
     func testSelectCardAfterMatch() {
         let matchingIndices = findAMatchingSet()
         let startingCountOfCardsInPlay = game.cardsInPlay.count
-        var _ = matchingIndices.map { game.selectCard(at: $0) }
+        _ = matchingIndices.map { game.selectCard(at: $0) }
         let matchedCards = game.selectedCards
 
         let cardsInPlayIndices = Array(0..<startingCountOfCardsInPlay)
@@ -198,7 +223,7 @@ class SetGameTests: XCTestCase {
 
     func testSelectCardAfterMismatch() {
         let nonMatchingIndices = findNonMatchingSet()
-        let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+        _ = nonMatchingIndices.map { game.selectCard(at: $0) }
         let nonMatchingCards = game.selectedCards
 
         let cardsInPlayIndices = Array(0..<game.cardsInPlay.count)
@@ -209,7 +234,7 @@ class SetGameTests: XCTestCase {
         XCTAssert(game.selectedCards.count == 1)
 
         game.selectCard(at: newChoice)
-        let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+        _ = nonMatchingIndices.map { game.selectCard(at: $0) }
         XCTAssert(nonMatchingCards == game.selectedCards)
     }
 
@@ -222,7 +247,7 @@ class SetGameTests: XCTestCase {
         XCTAssert(game.cardsInPlay.count == 81)
 
         let matchingIndices = findAMatchingSet()
-        let _ = matchingIndices.map { game.selectCard(at: $0) }
+        _ = matchingIndices.map { game.selectCard(at: $0) }
 
         game.selectCard(at: 0)
         XCTAssert(game.cardsInPlay.count == 78)
@@ -231,7 +256,7 @@ class SetGameTests: XCTestCase {
     /// Project 2 Required Task 8: if a matched card is chosen, no card should be selected.
     func testSelectMatchedCardAfterMatch() {
         let matchingIndices = findAMatchingSet()
-        let _ = matchingIndices.map { game.selectCard(at: $0) }
+        _ = matchingIndices.map { game.selectCard(at: $0) }
         XCTAssert(game.selectedCards.count == 3)
 
         game.selectCard(at: matchingIndices[0])
@@ -242,7 +267,7 @@ class SetGameTests: XCTestCase {
     func testDeal3CardsWithMatch() {
         let matchingIndices = findAMatchingSet()
         let startingCountOfCardsInPlay = game.cardsInPlay.count
-        let _ = matchingIndices.map { game.selectCard(at: $0) }
+        _ = matchingIndices.map { game.selectCard(at: $0) }
         game.deal3Cards()
 
         XCTAssert(game.matchedCards.count == 3)
@@ -253,7 +278,7 @@ class SetGameTests: XCTestCase {
     /// Project 2 Required Task 9: add 3 cards if selected cards are a mismatch.
     func testDeal3CardsWithMismatch() {
         let nonMatchingIndices = findNonMatchingSet()
-        let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+        _ = nonMatchingIndices.map { game.selectCard(at: $0) }
         game.deal3Cards()
 
         XCTAssert(game.matchedCards.isEmpty)
@@ -266,7 +291,7 @@ class SetGameTests: XCTestCase {
         let startingScore = game.score
 
         let matchingIndices = findAMatchingSet()
-        let _ = matchingIndices.map { game.selectCard(at: $0) }
+        _ = matchingIndices.map { game.selectCard(at: $0) }
 
         XCTAssert(game.score > startingScore)
     }
@@ -276,7 +301,7 @@ class SetGameTests: XCTestCase {
         let startingScore = game.score
 
         let nonMatchingIndices = findNonMatchingSet()
-        let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+        _ = nonMatchingIndices.map { game.selectCard(at: $0) }
 
         XCTAssert(game.score < startingScore)
     }
@@ -294,14 +319,17 @@ class SetGameTests: XCTestCase {
         let startingScore = game.score
 
         var matchingIndices = findAMatchingSet()
-        let _ = matchingIndices.map { game.selectCard(at: $0) }
+        _ = matchingIndices.map { game.selectCard(at: $0) }
         let quickMatchScoreIncrease = game.score - startingScore
+        game.deal3Cards()
 
         sleep(3)
         matchingIndices = findAMatchingSet()
-        let _ = matchingIndices.map { game.selectCard(at: $0) }
+        _ = matchingIndices.map { game.selectCard(at: $0) }
         let slowMatchScoreIncrease = game.score - quickMatchScoreIncrease - startingScore
 
+        XCTAssert(quickMatchScoreIncrease != 0)
+        XCTAssert(slowMatchScoreIncrease != 0)
         XCTAssert(quickMatchScoreIncrease > slowMatchScoreIncrease)
     }
 
@@ -310,14 +338,85 @@ class SetGameTests: XCTestCase {
         let startingScore = game.score
 
         var nonMatchingIndices = findNonMatchingSet()
-        let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+        _ = nonMatchingIndices.map { game.selectCard(at: $0) }
         let quickMismatchScoreDecrease = startingScore - game.score
 
         sleep(3)
         nonMatchingIndices = findNonMatchingSet()
-        let _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+        _ = nonMatchingIndices.map { game.selectCard(at: $0) }
         let slowMismatchScoreDecrease = startingScore - quickMismatchScoreDecrease - game.score
 
+        XCTAssert(slowMismatchScoreDecrease != 0)
+        XCTAssert(quickMismatchScoreDecrease != 0)
         XCTAssert(slowMismatchScoreDecrease > quickMismatchScoreDecrease)
+    }
+
+    func testScoringForMatchThenSelect() {
+        let matchingIndices = findAMatchingSet()
+        _ = matchingIndices.map { game.selectCard(at: $0) }
+
+        let scoreBeforeSelect = game.score
+        let newChoice = Set(Array(0..<game.cardsInPlay.count)).subtracting(Set(matchingIndices)).first!
+        game.selectCard(at: newChoice)
+
+        XCTAssert(game.score == scoreBeforeSelect)
+    }
+
+    func testScoringForMatchThenMatchedCardSelect() {
+        let matchingIndices = findAMatchingSet()
+        _ = matchingIndices.map { game.selectCard(at: $0) }
+
+        let scoreBeforeSelect = game.score
+        game.selectCard(at: matchingIndices[0])
+
+        XCTAssert(game.score == scoreBeforeSelect)
+    }
+
+    /// Project 2 Extra Credit 2: lower score for dealing 3 cards when there's a set in play.
+    func testScoringForDealWithSetInPlay() {
+        _ = findAMatchingSet()
+        let lastScore = game.score
+
+        game.deal3Cards()
+        XCTAssert(game.score < lastScore)
+    }
+
+    /// Project 2 Extra Credit 2: no penalty for dealing if there's **no** set in play.
+    func testScoringForDealWithNoSetInPlay() {
+        var matchingIndices = findAMatchingSetWithoutDealing()
+        var lastScore = game.score
+
+        while matchingIndices != nil {
+            _ = matchingIndices!.map { game.selectCard(at: $0) }
+            game.selectCard(at: matchingIndices![0])  // to remove matched cards from play
+            lastScore = game.score
+            matchingIndices = findAMatchingSetWithoutDealing()
+        }
+
+        game.deal3Cards()
+        XCTAssert(lastScore == game.score)
+    }
+
+    /// Project 2 Extra Credit 2: lower score for dealing 3 cards when there's a set in play.
+    func testScoringForDealAfterMismatch() {
+        _ = findAMatchingSet()  // make sure there's a matching set first
+        let nonMatchingIndices = findNonMatchingSet()
+        _ = nonMatchingIndices.map { game.selectCard(at: $0) }
+
+        let scoreBeforeDeal = game.score
+        game.deal3Cards()
+
+        XCTAssert(scoreBeforeDeal > game.score)
+    }
+
+    /// Project 2 Extra Credit 2: no penalty for dealing while there's a match.
+    func testScoringForDealAfterMatch() {
+        let matchingIndices = findAMatchingSet()
+        _ = matchingIndices.map { game.selectCard(at: $0) }
+
+        let scoreBeforeDeal = game.score
+        game.deal3Cards()
+
+        XCTAssert(scoreBeforeDeal == game.score)
     }
 }
